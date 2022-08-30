@@ -9,12 +9,12 @@ import { Plan } from 'src/app/plan/plan';
   styleUrls: ['./index.component.css']
 })
 export class UserIndexComponent implements OnInit {
-  plans: Plan[] = [];
+  userPlans: Plan[] = [];
 
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    
+    this.userPlans = this.userService.tempUserData[0].plans
   }
 
 }

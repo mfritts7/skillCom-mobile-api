@@ -3,21 +3,21 @@
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th>{{ plans[0].name }}</th>
-                <th>{{ plans[1].name }}</th>
-                <th>{{ plans[2].name }}</th>
+                <th>{{ availablePlans[0].name }}</th>
+                <th>{{ availablePlans[1].name }}</th>
+                <th>{{ availablePlans[2].name }}</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>
-                    <button type="button" (click)="addPlan(plans[0].id)" class="btn btn-success">Add</button>
+                    <button type="button" (click)="addPlan(availablePlans[0].id)" class="btn btn-success">Add</button>
                 </td>
                 <td>
-                    <button type="button" (click)="addPlan(plans[1].id)" class="btn btn-success">Add</button>
+                    <button type="button" (click)="addPlan(availablePlans[1].id)" class="btn btn-success">Add</button>
                 </td>
                 <td>
-                    <button type="button" (click)="addPlan(plans[2].id)" class="btn btn-success">Add</button>
+                    <button type="button" (click)="addPlan(availablePlans[2].id)" class="btn btn-success">Add</button>
                 </td>
             </tr>
         </tbody>

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 
-import { PlanService } from '../plan.service';
-import { Plan } from '../plan';
+import { UserService } from 'src/app/user/user.service'
+import { PlanService } from '../plan.service'
+import { Plan } from '../plan'
 
 @Component({
   selector: 'app-index',
@@ -9,16 +10,21 @@ import { Plan } from '../plan';
   styleUrls: ['./index.component.css']
 })
 export class PlanIndexComponent implements OnInit {
-  plans: Plan[] = this.planService.tempPlanData;
+  availablePlans: Plan[] = []
+  userService!: UserService
 
   constructor(private planService: PlanService) { }
 
   ngOnInit(): void {
-    
+    this.availablePlans = this.planService.tempPlanData
   }
 
   addPlan(id: number): void {
-    
+    this.userService.tempUserData[0].plans.push(this.findPlan(id))
+  }
+
+  findPlan(id:number): Plan {
+    return this.availablePlans[id-1]
   }
 
 }
