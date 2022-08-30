@@ -1,15 +1,16 @@
 ﻿namespace SkillCom_Mobile_Api.Models
 {
-    public class PhonePlan
+    public class Plan
     {
         public int Id { get; set; }
         public int Minutes { get; set; }
         public string PlanName { get; set; }
+        //public int PersonId { get; set; }
 
-        public Person Person { get; set; }
 
         //Navigation Properties
-        public virtual ICollection<Phone> Phone { get; set; }
+        public User User { get; set; }
+        public virtual ICollection<Device> Devices { get; set; }
 
     }
 }

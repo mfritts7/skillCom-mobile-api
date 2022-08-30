@@ -21,7 +21,61 @@ namespace SkillCom_Mobile_Api.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("SkillCom_Mobile_Api.Models.Person", b =>
+            modelBuilder.Entity("SkillCom_Mobile_Api.Models.Device", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PlanId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PlanId");
+
+                    b.ToTable("Device");
+                });
+
+            modelBuilder.Entity("SkillCom_Mobile_Api.Models.Plan", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Minutes")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PlanName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Plan");
+                });
+
+            modelBuilder.Entity("SkillCom_Mobile_Api.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -39,93 +93,39 @@ namespace SkillCom_Mobile_Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Person");
+                    b.ToTable("User");
                 });
 
-            modelBuilder.Entity("SkillCom_Mobile_Api.Models.Phone", b =>
+            modelBuilder.Entity("SkillCom_Mobile_Api.Models.Device", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PhonePlanId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Price")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PhonePlanId");
-
-                    b.ToTable("Phone");
-                });
-
-            modelBuilder.Entity("SkillCom_Mobile_Api.Models.PhonePlan", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("Minutes")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PersonId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PlanName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PersonId");
-
-                    b.ToTable("PhonePlan");
-                });
-
-            modelBuilder.Entity("SkillCom_Mobile_Api.Models.Phone", b =>
-                {
-                    b.HasOne("SkillCom_Mobile_Api.Models.PhonePlan", "PhonePlan")
-                        .WithMany("Phone")
-                        .HasForeignKey("PhonePlanId")
+                    b.HasOne("SkillCom_Mobile_Api.Models.Plan", "Plan")
+                        .WithMany("Devices")
+                        .HasForeignKey("PlanId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("PhonePlan");
+                    b.Navigation("Plan");
                 });
 
-            modelBuilder.Entity("SkillCom_Mobile_Api.Models.PhonePlan", b =>
+            modelBuilder.Entity("SkillCom_Mobile_Api.Models.Plan", b =>
                 {
-                    b.HasOne("SkillCom_Mobile_Api.Models.Person", "Person")
-                        .WithMany("PhonePlans")
-                        .HasForeignKey("PersonId")
+                    b.HasOne("SkillCom_Mobile_Api.Models.User", "User")
+                        .WithMany("Plans")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Person");
+                    b.Navigation("User");
                 });
 
-            modelBuilder.Entity("SkillCom_Mobile_Api.Models.Person", b =>
+            modelBuilder.Entity("SkillCom_Mobile_Api.Models.Plan", b =>
                 {
-                    b.Navigation("PhonePlans");
+                    b.Navigation("Devices");
                 });
 
-            modelBuilder.Entity("SkillCom_Mobile_Api.Models.PhonePlan", b =>
+            modelBuilder.Entity("SkillCom_Mobile_Api.Models.User", b =>
                 {
-                    b.Navigation("Phone");
+                    b.Navigation("Plans");
                 });
 #pragma warning restore 612, 618
         }

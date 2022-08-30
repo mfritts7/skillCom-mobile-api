@@ -12,55 +12,55 @@ namespace SkillCom_Mobile_Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PhonePlansController : ControllerBase
+    public class UsersController : ControllerBase
     {
         private readonly SkillComDbContext _context;
 
-        public PhonePlansController(SkillComDbContext context)
+        public UsersController(SkillComDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/PhonePlans
+        // GET: api/Users
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<PhonePlan>>> GetPhonePlan()
+        public async Task<ActionResult<IEnumerable<User>>> GetUser()
         {
-          if (_context.PhonePlan == null)
+          if (_context.User == null)
           {
               return NotFound();
           }
-            return await _context.PhonePlan.ToListAsync();
+            return await _context.User.ToListAsync();
         }
 
-        // GET: api/PhonePlans/5
+        // GET: api/Users/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<PhonePlan>> GetPhonePlan(int id)
+        public async Task<ActionResult<User>> GetUser(int id)
         {
-          if (_context.PhonePlan == null)
+          if (_context.User == null)
           {
               return NotFound();
           }
-            var phonePlan = await _context.PhonePlan.FindAsync(id);
+            var user = await _context.User.FindAsync(id);
 
-            if (phonePlan == null)
+            if (user == null)
             {
                 return NotFound();
             }
 
-            return phonePlan;
+            return user;
         }
 
-        // PUT: api/PhonePlans/5
+        // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPhonePlan(int id, PhonePlan phonePlan)
+        public async Task<IActionResult> PutUser(int id, User user)
         {
-            if (id != phonePlan.Id)
+            if (id != user.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(phonePlan).State = EntityState.Modified;
+            _context.Entry(user).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +68,7 @@ namespace SkillCom_Mobile_Api.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PhonePlanExists(id))
+                if (!UserExists(id))
                 {
                     return NotFound();
                 }
@@ -81,44 +81,44 @@ namespace SkillCom_Mobile_Api.Controllers
             return NoContent();
         }
 
-        // POST: api/PhonePlans
+        // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<PhonePlan>> PostPhonePlan(PhonePlan phonePlan)
+        public async Task<ActionResult<User>> PostUser(User user)
         {
-          if (_context.PhonePlan == null)
+          if (_context.User == null)
           {
-              return Problem("Entity set 'SkillComDbContext.PhonePlan'  is null.");
+              return Problem("Entity set 'SkillComDbContext.User'  is null.");
           }
-            _context.PhonePlan.Add(phonePlan);
+            _context.User.Add(user);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetPhonePlan", new { id = phonePlan.Id }, phonePlan);
+            return CreatedAtAction("GetUser", new { id = user.Id }, user);
         }
 
-        // DELETE: api/PhonePlans/5
+        // DELETE: api/Users/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePhonePlan(int id)
+        public async Task<IActionResult> DeleteUser(int id)
         {
-            if (_context.PhonePlan == null)
+            if (_context.User == null)
             {
                 return NotFound();
             }
-            var phonePlan = await _context.PhonePlan.FindAsync(id);
-            if (phonePlan == null)
+            var user = await _context.User.FindAsync(id);
+            if (user == null)
             {
                 return NotFound();
             }
 
-            _context.PhonePlan.Remove(phonePlan);
+            _context.User.Remove(user);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool PhonePlanExists(int id)
+        private bool UserExists(int id)
         {
-            return (_context.PhonePlan?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.User?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
