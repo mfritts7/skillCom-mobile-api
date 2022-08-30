@@ -11,20 +11,15 @@ import { Plan } from '../plan'
 })
 export class PlanIndexComponent implements OnInit {
   availablePlans: Plan[] = []
-  userService!: UserService
 
-  constructor(private planService: PlanService) { }
+  constructor(private planService: PlanService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.availablePlans = this.planService.tempPlanData
   }
 
-  addPlan(id: number): void {
-    this.userService.tempUserData[0].plans.push(this.findPlan(id))
-  }
-
-  findPlan(id:number): Plan {
-    return this.availablePlans[id-1]
+  addPlan(plan: Plan): void {
+    this.userService.tempUserData[0].plans.push(plan)
   }
 
 }
