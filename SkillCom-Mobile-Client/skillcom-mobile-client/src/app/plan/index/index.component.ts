@@ -9,11 +9,15 @@ import { Plan } from '../plan';
   styleUrls: ['./index.component.css']
 })
 export class PlanIndexComponent implements OnInit {
-  plans: Plan[] = [];
+  plans: Plan[] = this.planService.tempPlanData;
 
   constructor(private planService: PlanService) { }
 
   ngOnInit(): void {
+    
+  }
+
+  addPlan(id: number): void {
     
   }
 

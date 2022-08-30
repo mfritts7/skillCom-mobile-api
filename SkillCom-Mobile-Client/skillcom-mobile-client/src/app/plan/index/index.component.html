@@ -1,23 +1,27 @@
 <div class="container">
-    <h1>Plans</h1>
+    <h1>Choose a plan</h1>
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Minutes</th>
-                <th>Monthly Cost</th>
+                <th>{{ plans[0].name }}</th>
+                <th>{{ plans[1].name }}</th>
+                <th>{{ plans[2].name }}</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let plan of plans">
-                <td>{{ plan.id }}</td>
-                <td>{{ plan.name }}</td>
-                <td>{{ plan.minutes }}</td>
-                <!-- <td>{{ plan.monthlyCost }}</td> -->
+            <tr>
+                <td>
+                    <button type="button" (click)="addPlan(plans[0].id)" class="btn btn-success">Add</button>
+                </td>
+                <td>
+                    <button type="button" (click)="addPlan(plans[1].id)" class="btn btn-success">Add</button>
+                </td>
+                <td>
+                    <button type="button" (click)="addPlan(plans[2].id)" class="btn btn-success">Add</button>
+                </td>
             </tr>
         </tbody>
     </table>
-    <a routerLink="/plan/create/" class="btn btn-success">Add plan</a>
+    <a routerLink="/user" class="btn btn-primary">Back</a>
     <a routerLink="" class="btn btn-danger">Log Out</a>
 </div>

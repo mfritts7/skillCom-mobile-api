@@ -26,13 +26,17 @@ export class UserCreateComponent implements OnInit {
 
   get f() { return this.newUserForm.controls; }
 
+  // submit() {
+  //   this.userService.add(this.newUserForm.value).subscribe(() => {
+  //     console.log(this.newUserForm.value);
+  //     console.log(this.newUserForm.valid);
+  //     console.log("Account created successfully!");
+  //     this.router.navigateByUrl('/user');
+  //   });
+  // }
+  
   submit() {
-    this.userService.add(this.newUserForm.value).subscribe(() => {
-      console.log(this.newUserForm.value);
-      console.log(this.newUserForm.valid);
-      console.log("Account created successfully!");
-      this.router.navigateByUrl('/plan/index');
-    });
+    this.userService.add(this.newUserForm.value)
   }
 
 }

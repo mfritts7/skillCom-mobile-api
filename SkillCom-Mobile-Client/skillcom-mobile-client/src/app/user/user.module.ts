@@ -5,11 +5,13 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { UserRoutingModule } from './user-routing.module';
 import { UserCreateComponent } from './create/create.component';
+import { UserIndexComponent } from './index/index.component';
 
 
 @NgModule({
   declarations: [
-    UserCreateComponent
+    UserCreateComponent,
+    UserIndexComponent
   ],
   imports: [
     CommonModule,
