@@ -5,4 +5,5 @@ export interface Plan {
     name: string
     minutes: number
     monthlyCost: number
+    devices: Device[]
 }

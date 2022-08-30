@@ -13,8 +13,8 @@ export class PlanService {
   constructor(private http: HttpClient) { }
 
   tempPlanData: Plan[] = [
-    {"id":1,"name":"Basic","minutes":60,"monthlyCost":10},
-    {"id":1,"name":"Advanced","minutes":120,"monthlyCost":40},
-    {"id":1,"name":"Premium","minutes":180,"monthlyCost":80}
+    {"id":1,"name":"Basic","minutes":60,"monthlyCost":10,"devices":[]},
+    {"id":1,"name":"Advanced","minutes":120,"monthlyCost":40,"devices":[]},
+    {"id":1,"name":"Premium","minutes":180,"monthlyCost":80,"devices":[]}
   ];
 }

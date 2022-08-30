@@ -17,9 +17,9 @@ export class UserService {
   // }
 
   tempUserData: User[] = [
-    {"id":1,"name":"John Cena","email":"WrestleMania@gmail.com"},
-    {"id":2,"name":"Walter White","email":"WeNeedToCookJesse@yahoo.com"},
-    {"id":3,"name":"Barrack Obama","email":"potus@gmail.com"}
+    {"id":1,"name":"John Cena","email":"WrestleMania@gmail.com","plans":[]},
+    {"id":2,"name":"Walter White","email":"WeNeedToCookJesse@yahoo.com","plans":[]},
+    {"id":3,"name":"Barrack Obama","email":"potus@gmail.com","plans":[]}
   ];
   
   add(user: User): void {
