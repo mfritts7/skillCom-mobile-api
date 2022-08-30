@@ -12,55 +12,55 @@ namespace SkillCom_Mobile_Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PhonesController : ControllerBase
+    public class DevicesController : ControllerBase
     {
         private readonly SkillComDbContext _context;
 
-        public PhonesController(SkillComDbContext context)
+        public DevicesController(SkillComDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/Phones
+        // GET: api/Devices
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Phone>>> GetPhone()
+        public async Task<ActionResult<IEnumerable<Device>>> GetDevice()
         {
-          if (_context.Phone == null)
+          if (_context.Device == null)
           {
               return NotFound();
           }
-            return await _context.Phone.ToListAsync();
+            return await _context.Device.ToListAsync();
         }
 
-        // GET: api/Phones/5
+        // GET: api/Devices/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Phone>> GetPhone(int id)
+        public async Task<ActionResult<Device>> GetDevice(int id)
         {
-          if (_context.Phone == null)
+          if (_context.Device == null)
           {
               return NotFound();
           }
-            var phone = await _context.Phone.FindAsync(id);
+            var device = await _context.Device.FindAsync(id);
 
-            if (phone == null)
+            if (device == null)
             {
                 return NotFound();
             }
 
-            return phone;
+            return device;
         }
 
-        // PUT: api/Phones/5
+        // PUT: api/Devices/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPhone(int id, Phone phone)
+        public async Task<IActionResult> PutDevice(int id, Device device)
         {
-            if (id != phone.Id)
+            if (id != device.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(phone).State = EntityState.Modified;
+            _context.Entry(device).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +68,7 @@ namespace SkillCom_Mobile_Api.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PhoneExists(id))
+                if (!DeviceExists(id))
                 {
                     return NotFound();
                 }
@@ -81,44 +81,44 @@ namespace SkillCom_Mobile_Api.Controllers
             return NoContent();
         }
 
-        // POST: api/Phones
+        // POST: api/Devices
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Phone>> PostPhone(Phone phone)
+        public async Task<ActionResult<Device>> PostDevice(Device device)
         {
-          if (_context.Phone == null)
+          if (_context.Device == null)
           {
-              return Problem("Entity set 'SkillComDbContext.Phone'  is null.");
+              return Problem("Entity set 'SkillComDbContext.Device'  is null.");
           }
-            _context.Phone.Add(phone);
+            _context.Device.Add(device);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetPhone", new { id = phone.Id }, phone);
+            return CreatedAtAction("GetDevice", new { id = device.Id }, device);
         }
 
-        // DELETE: api/Phones/5
+        // DELETE: api/Devices/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePhone(int id)
+        public async Task<IActionResult> DeleteDevice(int id)
         {
-            if (_context.Phone == null)
+            if (_context.Device == null)
             {
                 return NotFound();
             }
-            var phone = await _context.Phone.FindAsync(id);
-            if (phone == null)
+            var device = await _context.Device.FindAsync(id);
+            if (device == null)
             {
                 return NotFound();
             }
 
-            _context.Phone.Remove(phone);
+            _context.Device.Remove(device);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool PhoneExists(int id)
+        private bool DeviceExists(int id)
         {
-            return (_context.Phone?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Device?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

@@ -12,55 +12,55 @@ namespace SkillCom_Mobile_Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PeopleController : ControllerBase
+    public class PlansController : ControllerBase
     {
         private readonly SkillComDbContext _context;
 
-        public PeopleController(SkillComDbContext context)
+        public PlansController(SkillComDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/People
+        // GET: api/Plans
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Person>>> GetPerson()
+        public async Task<ActionResult<IEnumerable<Plan>>> GetPlan()
         {
-          if (_context.Person == null)
+          if (_context.Plan == null)
           {
               return NotFound();
           }
-            return await _context.Person.ToListAsync();
+            return await _context.Plan.ToListAsync();
         }
 
-        // GET: api/People/5
+        // GET: api/Plans/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Person>> GetPerson(int id)
+        public async Task<ActionResult<Plan>> GetPlan(int id)
         {
-          if (_context.Person == null)
+          if (_context.Plan == null)
           {
               return NotFound();
           }
-            var person = await _context.Person.FindAsync(id);
+            var plan = await _context.Plan.FindAsync(id);
 
-            if (person == null)
+            if (plan == null)
             {
                 return NotFound();
             }
 
-            return person;
+            return plan;
         }
 
-        // PUT: api/People/5
+        // PUT: api/Plans/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPerson(int id, Person person)
+        public async Task<IActionResult> PutPlan(int id, Plan plan)
         {
-            if (id != person.Id)
+            if (id != plan.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(person).State = EntityState.Modified;
+            _context.Entry(plan).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +68,7 @@ namespace SkillCom_Mobile_Api.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PersonExists(id))
+                if (!PlanExists(id))
                 {
                     return NotFound();
                 }
@@ -81,44 +81,44 @@ namespace SkillCom_Mobile_Api.Controllers
             return NoContent();
         }
 
-        // POST: api/People
+        // POST: api/Plans
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Person>> PostPerson(Person person)
+        public async Task<ActionResult<Plan>> PostPlan(Plan plan)
         {
-          if (_context.Person == null)
+          if (_context.Plan == null)
           {
-              return Problem("Entity set 'SkillComDbContext.Person'  is null.");
+              return Problem("Entity set 'SkillComDbContext.Plan'  is null.");
           }
-            _context.Person.Add(person);
+            _context.Plan.Add(plan);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetPerson", new { id = person.Id }, person);
+            return CreatedAtAction("GetPlan", new { id = plan.Id }, plan);
         }
 
-        // DELETE: api/People/5
+        // DELETE: api/Plans/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePerson(int id)
+        public async Task<IActionResult> DeletePlan(int id)
         {
-            if (_context.Person == null)
+            if (_context.Plan == null)
             {
                 return NotFound();
             }
-            var person = await _context.Person.FindAsync(id);
-            if (person == null)
+            var plan = await _context.Plan.FindAsync(id);
+            if (plan == null)
             {
                 return NotFound();
             }
 
-            _context.Person.Remove(person);
+            _context.Plan.Remove(plan);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool PersonExists(int id)
+        private bool PlanExists(int id)
         {
-            return (_context.Person?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Plan?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
