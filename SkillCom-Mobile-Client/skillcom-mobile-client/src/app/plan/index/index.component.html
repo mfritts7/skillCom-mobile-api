@@ -1,0 +1,23 @@
+<div class="container">
+    <h1>Plans</h1>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Minutes</th>
+                <th>Monthly Cost</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let plan of plans">
+                <td>{{ plan.id }}</td>
+                <td>{{ plan.name }}</td>
+                <td>{{ plan.minutes }}</td>
+                <!-- <td>{{ plan.monthlyCost }}</td> -->
+            </tr>
+        </tbody>
+    </table>
+    <a routerLink="/plan/create/" class="btn btn-success">Add plan</a>
+    <a routerLink="" class="btn btn-danger">Log Out</a>
+</div>
