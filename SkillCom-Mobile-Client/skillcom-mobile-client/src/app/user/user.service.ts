@@ -19,10 +19,14 @@ export class UserService {
   tempUserData: User[] = [
     {"id":1,"name":"John Cena","email":"WrestleMania@gmail.com","plans":[]},
     {"id":2,"name":"Walter White","email":"WeNeedToCookJesse@yahoo.com","plans":[]},
-    {"id":3,"name":"Barrack Obama","email":"potus@gmail.com","plans":[]}
+    {"id":3,"name":"Barack Obama","email":"potus@gmail.com","plans":[]}
   ];
   
   add(user: User): void {
     this.tempUserData.push(user);
+  }
+
+  removePlan(i: number): void {
+    this.tempUserData[0].plans.splice(i,1)
   }
 }

@@ -17,4 +17,8 @@ export class UserIndexComponent implements OnInit {
     this.userPlans = this.userService.tempUserData[0].plans
   }
 
+  removeContract(i: number): void {
+    this.userService.removePlan(i)
+  }
+
 }

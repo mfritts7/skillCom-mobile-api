@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>Plans</h1>
+    <h1>Contracts</h1>
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
@@ -7,14 +7,18 @@
                 <th>Name</th>
                 <th>Minutes</th>
                 <th>Monthly Cost</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let plan of userPlans">
-                <td>{{ plan.id }}</td>
+            <tr *ngFor="let plan of userPlans; let i = index">
+                <td>{{ i }}</td>
                 <td>{{ plan.name }}</td>
                 <td>{{ plan.minutes }}</td>
                 <td>{{ plan.monthlyCost }}</td>
+                <td>
+                    <button type="button" (click)="removeContract(i)" class="btn btn-danger">Delete plan</button>
+                </td>
             </tr>
         </tbody>
     </table>
