@@ -20,7 +20,7 @@ export class PlanIndexComponent implements OnInit {
   ngOnInit(): void {
     //this.availablePlans = this.planService.tempPlanData
    //this.availablePlans = this.planService.tempPlanData
-    this.retrievePlans(); 
+    this.retrievePlans()
 
 
   }
