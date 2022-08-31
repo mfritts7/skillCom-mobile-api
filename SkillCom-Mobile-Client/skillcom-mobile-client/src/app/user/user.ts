@@ -4,7 +4,6 @@ export interface User {
     id: number
     name: string
     email: string
-    plans: Plan[]
 }
 
 export interface UserDTO {
