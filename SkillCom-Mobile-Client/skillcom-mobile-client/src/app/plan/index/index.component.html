@@ -1,11 +1,17 @@
+
 <div class="container">
     <h1>Choose a plan</h1>
     <table class="table table-bordered table-striped">
         <thead>
-            <tr>
-                <th>{{ availablePlans[0].name }}</th>
+            <tr *ngFor = "let plan of availablePlans">
+ <!--           <th>{{ availablePlans[0].name }}</th>
                 <th>{{ availablePlans[1].name }}</th>
                 <th>{{ availablePlans[2].name }}</th>
+ -->
+            <td>{{plan.planName}} </td>
+            <td>Monthly Cost -{{plan.monthlyPrice}}$ </td>
+            <td><a routerLink="/device" (click)="(addPlan(plan.id))" class="btn btn-success">Select</a></td>
+
             </tr>
         </thead>
         <tbody>
@@ -21,10 +27,7 @@
                 </td> -->
 
                 <!-- <td><a routerLink="/device" (click)="(addPlan(0))" class="btn btn-success">Select</a></td> -->
-                <td><a routerLink="/device" (click)="(addPlan(availablePlans[0].id))" class="btn btn-success">Select</a></td>
-                <td><a routerLink="/device" (click)="(addPlan(availablePlans[1].id))" class="btn btn-success">Select</a></td>
-                <td><a routerLink="/device" (click)="(addPlan(availablePlans[2].id))" class="btn btn-success">Select</a></td>
-            </tr>
+              </tr>
         </tbody>
     </table>
     <a routerLink="/user" class="btn btn-primary">Back</a>

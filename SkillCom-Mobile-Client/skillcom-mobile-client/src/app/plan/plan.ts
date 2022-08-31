@@ -2,8 +2,6 @@ import { Device } from "../device/device";
 
 export interface Plan {
     id: number
-    name: string
-    minutes: number
-    monthlyCost: number
-    devices: Device[]
+    planName: string
+    monthlyPrice: number
 }

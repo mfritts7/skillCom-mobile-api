@@ -14,11 +14,11 @@ export class UserIndexComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.userPlans = this.userService.tempUserData[0].plans
+    // this.userPlans = this.userService.tempUserData[0].plans
   }
 
-  removeContract(i: number): void {
-    this.userService.removePlan(i)
-  }
+  // removeContract(i: number): void {
+  //   this.userService.removePlan(i)
+  // }
 
 }

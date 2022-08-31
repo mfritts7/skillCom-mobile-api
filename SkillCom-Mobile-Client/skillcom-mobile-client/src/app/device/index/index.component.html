@@ -2,21 +2,20 @@
     PLAN INFO
 
     <ol>
-        <li> Name of Plan- {{availablePlans[tempContract.planId].name}}</li>
-        <li> Minutes Allowed- {{availablePlans[tempContract.planId].minutes}} min</li>
-        <li> Monthly Cost- {{availablePlans[tempContract.planId].monthlyCost}}$</li>
+        <li> Name of Plan- {{availablePlans[tempContract.planId-1].planName}}</li>
+        <li> Monthly Cost- {{availablePlans[tempContract.planId-1].monthlyPrice}}$</li>
     </ol>
 
     <h3>Choose a device</h3>
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th>{{ availableDevices[0].type }}</th>
-                <th>{{ availableDevices[1].type }}</th>
-                <th>{{ availableDevices[2].type }}</th>
+                <th>Phone</th>
+                <th>Price</th>
+                <th></th>
             </tr>
         </thead>
-        <tbody>
+  <!--     <tbody>
             <tr>
                 <td>
                     <button  type="button" (click)="addDevice(availableDevices[0].id)" class="btn btn-success">Add</button>
@@ -29,6 +28,20 @@
                 </td>
             </tr>
         </tbody>
+
+    -->
+    <tbody>
+        <tr *ngFor = "let device of availableDevices">
+            <td> {{ device.type }}</td>
+            <td> {{ device.price }}$</td>
+
+
+            <td style = "text-align: center;">
+
+            <button type="button" (click)="addDevice(device.id)" class="btn btn-danger">Add+</button>
+            </td>
+        </tr>
+    </tbody>
     </table>
     <a routerLink="/plan" class="btn btn-primary">Back</a>
     <a routerLink="" class="btn btn-danger">Log out</a>
