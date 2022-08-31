@@ -12,7 +12,8 @@ import { Contract } from 'src/app/contract/contract'
 })
 export class PlanIndexComponent implements OnInit {
   availablePlans: Plan[] = []
-  contract: Contract = {"userId":69,"planId":69,"deviceId":69};
+  //contract: Contract = {"userId":69,"planId":69,"deviceId":69};
+contract: Contract = this.planService.tempContract;
 
   constructor(private planService: PlanService, private userService: UserService) { }
 

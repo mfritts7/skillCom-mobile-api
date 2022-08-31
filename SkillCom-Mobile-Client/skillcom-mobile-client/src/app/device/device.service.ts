@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { environment } from 'src/environments/environment';
 import { Device } from './device';
 
@@ -11,7 +10,7 @@ import { Device } from './device';
 export class DeviceService {
   private userUrl: string = `${environment.apiUrl}/Device`
   constructor(private http: HttpClient) { }
-
+  
   tempDeviceData: Device[] = [
     {"id":1,"phoneNumber":"232-137-8544","price":1200,"type":"iPhone13"},
     {"id":2,"phoneNumber":"123-532-8665","price":1150,"type":"Pixel6a"},

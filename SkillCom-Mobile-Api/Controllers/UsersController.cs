@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SkillCom_Mobile_Api.Data;
 using SkillCom_Mobile_Api.Models;
+using SkillCom_Mobile_Api.DTO;
 
 namespace SkillCom_Mobile_Api.Controllers
 {
@@ -84,12 +85,20 @@ namespace SkillCom_Mobile_Api.Controllers
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public async Task<ActionResult<User>> PostUser(UserDTO userDto)
         {
           if (_context.User == null)
           {
               return Problem("Entity set 'SkillComDbContext.User'  is null.");
           }
+
+            User user = new User
+            {
+                Name = userDto.Name,
+                Email = userDto.Email
+            };
+
+
             _context.User.Add(user);
             await _context.SaveChangesAsync();
 

@@ -9,28 +9,27 @@ namespace SkillCom_Mobile_Api.Data
         public DbSet<User> User { get; set; }
         public DbSet<Device> Device { get; set; }
         public DbSet<Plan> Plan { get; set; }
+        public DbSet<Contract> Contract { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Contract>().HasKey(t => new { t.UserId, t.DeviceId, t.PlanId });
 
+            modelBuilder.Entity<Contract>()
+                .HasOne(t => t.User)
+                .WithMany(t => t.Contracts)
+                .HasForeignKey(t => t.UserId);
 
-            //modelBuilder.Entity<Post>()
-            //    .HasOne(p => p.Blog)
-            //    .WithMany(b => b.Posts);
+            modelBuilder.Entity<Contract>()
+                .HasOne(t => t.Device)
+                .WithMany(t => t.Contracts)
+                .HasForeignKey(t => t.DeviceId);
 
-            //modelBuilder.Entity<User>().HasKey(ps => ps.Id);
-            //modelBuilder.Entity<Plan>().HasKey(ps => ps.Id);
-            //modelBuilder.Entity<Device>().HasKey(ps => ps.Id);
+            modelBuilder.Entity<Contract>()
+                .HasOne(t => t.Plan)
+                .WithMany(t => t.Contracts)
+                .HasForeignKey(t => t.PlanId);
 
-            modelBuilder.Entity<User>().HasMany(b => b.Plans).WithOne();
-            modelBuilder.Entity<Plan>().HasMany(b => b.Devices).WithOne();
-
-            modelBuilder.Entity<Plan>()
-                .HasOne(p => p.User)
-                .WithMany(b => b.Plans);
-            modelBuilder.Entity<Device>()
-            .HasOne(p => p.Plan)
-            .WithMany(b => b.Devices);
 
 
         }

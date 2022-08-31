@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SkillCom_Mobile_Api.Data;
 using SkillCom_Mobile_Api.Models;
+using SkillCom_Mobile_Api.DTO;
 
 namespace SkillCom_Mobile_Api.Controllers
 {
@@ -84,12 +85,20 @@ namespace SkillCom_Mobile_Api.Controllers
         // POST: api/Plans
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Plan>> PostPlan(Plan plan)
+        public async Task<ActionResult<Plan>> PostPlan(PlanDTO planDto)
         {
           if (_context.Plan == null)
           {
               return Problem("Entity set 'SkillComDbContext.Plan'  is null.");
           }
+
+            Plan plan = new Plan
+            {
+                MonthlyPrice = planDto.MonthlyPrice,
+                PlanName = planDto.PlanName
+            };
+
+
             _context.Plan.Add(plan);
             await _context.SaveChangesAsync();
 
