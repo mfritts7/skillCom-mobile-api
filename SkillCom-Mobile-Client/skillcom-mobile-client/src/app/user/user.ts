@@ -6,3 +6,8 @@ export interface User {
     email: string
     plans: Plan[]
 }
+
+export interface UserDTO {
+    name: string
+    email: string
+}

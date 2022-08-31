@@ -10,7 +10,7 @@
         </thead>
         <tbody>
             <tr>
-                <td>
+                <!-- <td>
                     <button type="button" (click)="addPlan(availablePlans[0])" class="btn btn-success">Add</button>
                 </td>
                 <td>
@@ -18,10 +18,15 @@
                 </td>
                 <td>
                     <button type="button" (click)="addPlan(availablePlans[2])" class="btn btn-success">Add</button>
-                </td>
+                </td> -->
+
+                <!-- <td><a routerLink="/device" (click)="(addPlan(0))" class="btn btn-success">Select</a></td> -->
+                <td><a routerLink="/device" (click)="(addPlan(availablePlans[0].id))" class="btn btn-success">Select</a></td>
+                <td><a routerLink="/device" (click)="(addPlan(availablePlans[1].id))" class="btn btn-success">Select</a></td>
+                <td><a routerLink="/device" (click)="(addPlan(availablePlans[2].id))" class="btn btn-success">Select</a></td>
             </tr>
         </tbody>
     </table>
     <a routerLink="/user" class="btn btn-primary">Back</a>
-    <a routerLink="" class="btn btn-danger">Log Out</a>
+    <a routerLink="" class="btn btn-danger">Log out</a>
 </div>

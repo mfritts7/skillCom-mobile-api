@@ -1,1 +1,28 @@
-<p>index works!</p>
+<div class="container">
+    -- info about the plan you chose will go here --
+    <h3>Choose a device</h3>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>{{ availableDevices[0].type }}</th>
+                <th>{{ availableDevices[1].type }}</th>
+                <th>{{ availableDevices[2].type }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <button type="button" (click)="addDevice(availableDevices[0].id)" class="btn btn-success">Add</button>
+                </td>
+                <td>
+                    <button type="button" (click)="addDevice(availableDevices[1].id)" class="btn btn-success">Add</button>
+                </td>
+                <td>
+                    <button type="button" (click)="addDevice(availableDevices[2].id)" class="btn btn-success">Add</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a routerLink="/plan" class="btn btn-primary">Back</a>
+    <a routerLink="" class="btn btn-danger">Log out</a>
+</div>

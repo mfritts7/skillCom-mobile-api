@@ -37,6 +37,7 @@ export class UserCreateComponent implements OnInit {
   
   submit() {
     this.userService.add(this.newUserForm.value)
+    console.log(this.userService)
   }
 
 }

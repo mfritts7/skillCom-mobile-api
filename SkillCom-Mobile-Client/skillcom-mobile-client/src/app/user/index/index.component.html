@@ -7,6 +7,7 @@
                 <th>Name</th>
                 <th>Minutes</th>
                 <th>Monthly Cost</th>
+                <th>Devices</th>
                 <th></th>
             </tr>
         </thead>
@@ -16,6 +17,8 @@
                 <td>{{ plan.name }}</td>
                 <td>{{ plan.minutes }}</td>
                 <td>{{ plan.monthlyCost }}</td>
+                <!-- <td>{{ plan.devices[0].type }}</td> -->
+                <td>x</td>
                 <td>
                     <button type="button" (click)="removeContract(i)" class="btn btn-danger">Delete contract</button>
                 </td>
@@ -23,5 +26,5 @@
         </tbody>
     </table>
     <a routerLink="/plan" class="btn btn-success">Add plan</a>
-    <a routerLink="" class="btn btn-danger">Log Out</a>
+    <a routerLink="" class="btn btn-danger">Log out</a>
 </div>
