@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SkillCom_Mobile_Api.Data;
 
@@ -11,9 +12,10 @@ using SkillCom_Mobile_Api.Data;
 namespace SkillCom_Mobile_Api.Migrations
 {
     [DbContext(typeof(SkillComDbContext))]
-    partial class SkillComDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220831221550_Added JwtStuff")]
+    partial class AddedJwtStuff
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
