@@ -1,10 +1,9 @@
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, from, of, throwError, catchError } from 'rxjs';
+
 import { environment } from 'src/environments/environment';
 import { Device } from './device';
-import { Injectable } from '@angular/core';
-import { HttpHeaders } from '@angular/common/http';
-import { from,of,throwError,catchError } from 'rxjs';
 
 
 @Injectable({

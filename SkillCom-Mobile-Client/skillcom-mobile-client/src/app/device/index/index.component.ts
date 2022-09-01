@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 import { UserService } from 'src/app/user/user.service';
-import { DeviceService } from '../device.service';
-import { Device } from '../device';
+import { Contract } from 'src/app/contract/contract';
 import { PlanService } from 'src/app/plan/plan.service';
 import { Plan } from 'src/app/plan/plan';
-import { Contract } from 'src/app/contract/contract';
+import { DeviceService } from '../device.service';
+import { Device } from '../device';
 
 @Component({
   selector: 'app-index',

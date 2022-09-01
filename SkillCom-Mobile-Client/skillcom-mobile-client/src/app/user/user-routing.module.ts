@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { UserCreateComponent } from './create/create.component';
 import { UserIndexComponent } from './index/index.component';
 

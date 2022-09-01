@@ -1,6 +1,6 @@
 export interface Device {
-    id: number
-    phoneNumber: string
+    id: number,
+    phoneNumber: string,
+    type: string,
     price: number
-    type: string
 }

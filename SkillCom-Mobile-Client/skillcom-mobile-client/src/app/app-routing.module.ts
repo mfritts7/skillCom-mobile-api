@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { CheckoutComponent } from './checkout/checkout.component';
 import { FrontComponent } from './front/front.component';
 

@@ -7,8 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'SkillCom Mobile';
-  planId!: number
-  addPlan(newPlanId: number) {
-    this.planId = newPlanId
-  }
 }

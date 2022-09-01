@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { UserService } from '../user.service';
-import { Plan } from 'src/app/plan/plan';
 import { PlanService } from 'src/app/plan/plan.service';
+import { Plan } from 'src/app/plan/plan';
 
 @Component({
   selector: 'app-index',
