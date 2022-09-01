@@ -24,7 +24,7 @@ namespace SkillCom_Mobile_Api.Controllers
 
         // GET: api/Plans
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Plan>>> GetPlan()
+        public async Task<ActionResult<IEnumerable<Plan>>> GetPlans()
         {
           if (_context.Plan == null)
           {

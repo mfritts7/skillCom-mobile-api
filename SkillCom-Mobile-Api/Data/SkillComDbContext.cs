@@ -1,15 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SkillCom_Mobile_Api.Models;
 
+using SkillCom_Mobile_Api.Models;
 
 namespace SkillCom_Mobile_Api.Data
 {
     public class SkillComDbContext : DbContext
     {
-        public DbSet<User> User { get; set; }
-        public DbSet<Device> Device { get; set; }
-        public DbSet<Plan> Plan { get; set; }
-        public DbSet<Contract> Contract { get; set; }
+        public DbSet<User> User { get; set; } = null!;
+        public DbSet<Device> Device { get; set; } = null!;
+        public DbSet<Plan> Plan { get; set; } = null!;
+        public DbSet<Contract> Contract { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -29,22 +29,11 @@ namespace SkillCom_Mobile_Api.Data
                 .HasOne(t => t.Plan)
                 .WithMany(t => t.Contracts)
                 .HasForeignKey(t => t.PlanId);
-
-
-
         }
-
-
 
         public SkillComDbContext(DbContextOptions<SkillComDbContext> options) : base(options)
         {
 
-
         }
     }
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-
-
-        //}
 }

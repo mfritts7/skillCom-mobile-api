@@ -24,7 +24,7 @@ namespace SkillCom_Mobile_Api.Controllers
 
         // GET: api/Contracts
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Contract>>> GetContract()
+        public async Task<ActionResult<IEnumerable<Contract>>> GetContracts()
         {
           if (_context.Contract == null)
           {
@@ -37,11 +37,29 @@ namespace SkillCom_Mobile_Api.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Contract>> GetContract(int id)
         {
-          if (_context.Contract == null)
-          {
-              return NotFound();
-          }
+            if (_context.Contract == null)
+            {
+                return NotFound();
+            }
             var contract = await _context.Contract.FindAsync(id);
+
+            if (contract == null)
+            {
+                return NotFound();
+            }
+
+            return contract;
+        }
+
+        // GET: api/Contracts/User/5
+        [HttpGet("User/{id}")]
+        public async Task<ActionResult<Contract>> GetContractsByUser(int id)
+        {
+            if (_context.Contract == null)
+            {
+                return NotFound();
+            }
+            var contract = await _context.Contract.Where(c => c.User.Where(u => u.Id == id).Any()).ToListAsync();
 
             if (contract == null)
             {

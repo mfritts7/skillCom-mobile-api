@@ -1,16 +1,17 @@
-﻿namespace SkillCom_Mobile_Api.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace SkillCom_Mobile_Api.Models
 {
     public class User
     {
-
+        [Key]
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public byte[] PasswordHash { get; set; }
-        public byte[] PasswordSalt { get; set; }
+        public string Name { get; set; } = null!;
+        public string Email { get; set; } = null!;
+        public byte[] PasswordHash { get; set; } = null!;
+        public byte[] PasswordSalt { get; set; } = null!;
 
         //Navigation Properties
-        public virtual List<Contract> Contracts { get; set; }
-
+        public virtual ICollection<Contract> Contracts { get; set; } = null!;
     }
 }
