@@ -21,9 +21,9 @@ export class DeviceIndexComponent implements OnInit {
   constructor(private deviceService: DeviceService, private userService: UserService, private planService: PlanService) { }
 
   ngOnInit(): void {
-    //this.availableDevices = this.deviceService.tempDeviceData
-    this.availablePlans = this.planService.tempPlanData;
-    this.tempContract = this.planService.tempContract;
+    // this.availableDevices = this.deviceService.tempDeviceData
+    // this.availablePlans = this.planService.tempPlanData;
+    this.tempContract = this.planService.newContract;
     this.retrieveDevices();
   }
 
@@ -32,9 +32,9 @@ export class DeviceIndexComponent implements OnInit {
   }
 
   addDevice(id: number): Contract {
-    this.planService.tempContract.deviceId = id;
+    this.planService.newContract.deviceId = id;
     console.log("Added device id to contract");
     console.log(this.tempContract);
-    return this.planService.tempContract;
+    return this.planService.newContract;
   }
 }

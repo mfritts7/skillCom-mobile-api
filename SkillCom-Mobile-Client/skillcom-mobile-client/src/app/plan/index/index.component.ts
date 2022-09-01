@@ -12,22 +12,21 @@ import { Contract } from 'src/app/contract/contract'
 })
 export class PlanIndexComponent implements OnInit {
   availablePlans: Plan[] = []
-  contract: Contract = this.planService.tempContract
+  contract: Contract = this.planService.newContract
 
   constructor(private planService: PlanService, private userService: UserService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.retrievePlans();
   }
 
-  retrievePlans(): void {
+  retrievePlans() {
     this.planService.getPlans().subscribe(availablePlans => this.availablePlans = availablePlans);
   }
 
-  addPlan(id: number): Contract {
+  addPlan(id: number) {
     this.contract.planId = id
-    console.log("added plan id to contract")
+    console.log("Added planId to contract")
     console.log(this.contract)
-    return this.contract
   }
 }

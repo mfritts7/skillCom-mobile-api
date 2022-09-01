@@ -22,8 +22,8 @@ export class UserIndexComponent implements OnInit {
   //   this.userService.removePlan(i)
   // }
 
-  lookupPlan(id: number): Plan {
-    return this.planService.tempPlanData[id-1]
-  }
+  // lookupPlan(id: number): Plan {
+  //   return this.planService.tempPlanData[id-1]
+  // }
 
 }
