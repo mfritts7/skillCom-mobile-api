@@ -10,12 +10,13 @@ import { Device } from './device';
   providedIn: 'root'
 })
 export class DeviceService {
-  private deviceUrl: string = `${environment.apiUrl}/Device`
+  private deviceUrl: string = `${environment.apiUrl}/Devices`;
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':'application/json'
     })
-  }
+  };
+  newDevice!: Device;
   // tempDeviceData: Device[] = [
   //   {"id":1,"phoneNumber":"1","price":1200,"type":"iPhone13"},
   //   {"id":2,"phoneNumber":"2","price":1150,"type":"Pixel6a"},
@@ -28,7 +29,7 @@ export class DeviceService {
   constructor(private http: HttpClient) { }
 
   getDevices(): Observable<Device[]> {
-    console.log("retrieving devices")
+    console.log("Getting devices")
     return this.http.get<Device[]>(this.deviceUrl,this.httpOptions)
   }
 }

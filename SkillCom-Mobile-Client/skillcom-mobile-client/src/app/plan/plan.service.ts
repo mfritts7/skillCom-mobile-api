@@ -10,13 +10,14 @@ import { Contract } from 'src/app/contract/contract';
   providedIn: 'root'
 })
 export class PlanService {
-  private planUrl: string = `${environment.apiUrl}/Plans`
+  private planUrl: string = `${environment.apiUrl}/Plans`;
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':'application/json'
     })
-  }
+  };
   newContract: Contract = {"userId":-1,"planId":-1,"deviceId":-1};
+  newPlan!: Plan;
   // tempPlanData: Plan[] = [
   //   {"id":1,"planName":"Basic","monthlyPrice":10},
   //   {"id":2,"planName":"Advanced","monthlyPrice":40},
@@ -26,7 +27,7 @@ export class PlanService {
   constructor(private http: HttpClient) { }
 
   getPlans(): Observable<Plan[]> {
-    console.log("Getting plans")
+    console.log("Getting plans");
     return this.http.get<Plan[]>(this.planUrl, this.httpOptions);
   }
 }

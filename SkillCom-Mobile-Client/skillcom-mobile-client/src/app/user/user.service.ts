@@ -9,7 +9,7 @@ import { User } from './user';
   providedIn: 'root'
 })
 export class UserService {
-  private userUrl: string = `${environment.apiUrl}/User`
+  private userUrl: string = `${environment.apiUrl}/User`;
   // tempUserData: User[] = [
   //   {"id":1,"name":"John Cena","email":"WrestleMania@gmail.com"},
   //   {"id":2,"name":"Walter White","email":"WeNeedToCookJesse@yahoo.com"},

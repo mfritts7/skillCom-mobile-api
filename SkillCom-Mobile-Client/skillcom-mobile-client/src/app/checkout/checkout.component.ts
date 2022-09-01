@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-// import { Contract } from '../contract/contract';
-import { Device } from '../device/device';
 import { DeviceService } from '../device/device.service';
-import { Plan } from '../plan/plan';
+import { Device } from '../device/device';
 import { PlanService } from '../plan/plan.service';
+import { Plan } from '../plan/plan';
 import { UserService } from '../user/user.service';
 
 @Component({
@@ -12,19 +11,15 @@ import { UserService } from '../user/user.service';
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
-  availableDevices: Device[] = []
-  availablePlans : Plan[] = []
-  newPlan!: Plan
-  // tempContract!: Contract  
+  chosenPlan!: Plan
+  chosenDevice!: Device
 
   constructor(private userService: UserService, private planService: PlanService, private deviceService: DeviceService) { }
   
 
   ngOnInit(): void {
-    // this.availablePlans = this.planService.tempPlanData
-    // this.availableDevices = this.deviceService.tempDeviceData
-    // this.newPlan = this.userService.newPlan
-    // this.tempContract = this.planService.tempContract
+    this.chosenPlan = this.planService.newPlan;
+    this.chosenDevice = this.deviceService.newDevice;
   }
 
   addContract(): void {

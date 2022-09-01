@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 
 import { UserService } from 'src/app/user/user.service'
-import { Contract } from 'src/app/contract/contract'
 import { PlanService } from '../plan.service'
 import { Plan } from '../plan'
 
@@ -11,8 +10,7 @@ import { Plan } from '../plan'
   styleUrls: ['./index.component.css']
 })
 export class PlanIndexComponent implements OnInit {
-  availablePlans: Plan[] = []
-  contract: Contract = this.planService.newContract
+  availablePlans: Plan[] = [];
 
   constructor(private planService: PlanService, private userService: UserService) { }
 
@@ -21,12 +19,16 @@ export class PlanIndexComponent implements OnInit {
   }
 
   retrievePlans() {
-    this.planService.getPlans().subscribe(availablePlans => this.availablePlans = availablePlans);
+    this.planService.getPlans().subscribe(plans => this.availablePlans = plans);
   }
 
-  addPlan(id: number) {
-    this.contract.planId = id
-    console.log("Added planId to contract")
-    console.log(this.contract)
+  addPlanWithId(id: number) {
+    this.planService.newContract.planId = id;
+    console.log("Added planId to newContract");
+    console.log(this.planService.newContract);
+  }
+
+  addPlan(plan: Plan) {
+    this.planService.newPlan = JSON.parse(JSON.stringify(plan))
   }
 }
