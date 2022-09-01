@@ -8,11 +8,13 @@ import { UserModule } from './user/user.module';
 import { PlanModule } from './plan/plan.module';
 import { DeviceModule } from './device/device.module';
 import { FrontComponent } from './front/front.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FrontComponent
+    FrontComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

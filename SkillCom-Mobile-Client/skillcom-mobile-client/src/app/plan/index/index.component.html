@@ -3,27 +3,22 @@
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th>{{ availablePlans[0].name }}</th>
-                <th>{{ availablePlans[1].name }}</th>
-                <th>{{ availablePlans[2].name }}</th>
+                <th>Name</th>
+                <th>Cost</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <!-- <td>
-                    <button type="button" (click)="addPlan(availablePlans[0])" class="btn btn-success">Add</button>
-                </td>
-                <td>
-                    <button type="button" (click)="addPlan(availablePlans[1])" class="btn btn-success">Add</button>
-                </td>
-                <td>
-                    <button type="button" (click)="addPlan(availablePlans[2])" class="btn btn-success">Add</button>
-                </td> -->
+            <tr *ngFor="let plan of availablePlans">
+                <td>{{ plan.name }}</td>
+                <td>{{ plan.monthlyCost }}</td>
+                <td><a routerLink="/device" (click)="(addPlan(plan))" class="btn btn-success">Select</a></td>
 
                 <!-- <td><a routerLink="/device" (click)="(addPlan(0))" class="btn btn-success">Select</a></td> -->
-                <td><a routerLink="/device" (click)="(addPlan(availablePlans[0].id))" class="btn btn-success">Select</a></td>
+
+                <!-- <td><a routerLink="/device" (click)="(addPlan(availablePlans[0].id))" class="btn btn-success">Select</a></td>
                 <td><a routerLink="/device" (click)="(addPlan(availablePlans[1].id))" class="btn btn-success">Select</a></td>
-                <td><a routerLink="/device" (click)="(addPlan(availablePlans[2].id))" class="btn btn-success">Select</a></td>
+                <td><a routerLink="/device" (click)="(addPlan(availablePlans[2].id))" class="btn btn-success">Select</a></td> -->
             </tr>
         </tbody>
     </table>

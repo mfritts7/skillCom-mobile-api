@@ -1,25 +1,24 @@
 <div class="container">
-    -- info about the plan you chose will go here --
-    <h3>Choose a device</h3>
+    <!-- <p>{{availablePlans[tempContract.planId-1].name}} Plan - ${{availablePlans[tempContract.planId-1].monthlyCost}}</p> -->
+    <h3>{{ newPlan.name }} Plan - ${{ newPlan.monthlyCost }}</h3>
+    <h1>Choose a device</h1>
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th>{{ availableDevices[0].type }}</th>
-                <th>{{ availableDevices[1].type }}</th>
-                <th>{{ availableDevices[2].type }}</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>
-                    <button type="button" (click)="addDevice(availableDevices[0].id)" class="btn btn-success">Add</button>
-                </td>
-                <td>
-                    <button type="button" (click)="addDevice(availableDevices[1].id)" class="btn btn-success">Add</button>
-                </td>
-                <td>
-                    <button type="button" (click)="addDevice(availableDevices[2].id)" class="btn btn-success">Add</button>
-                </td>
+            <tr *ngFor="let device of availableDevices">
+                <td>{{ device.type }}</td>
+                <td>{{ device.price }}</td>
+                <td><a routerLink="/checkout" (click)="(addDevice(device))" class="btn btn-success">Add</a></td>
+
+                <!-- <td><a routerLink="/checkout" (click)="addDevice(availableDevices[0].id)" class="btn btn-success">Select</a></td>
+                <td><a routerLink="/checkout" (click)="addDevice(availableDevices[1].id)" class="btn btn-success">Select</a></td>
+                <td><a routerLink="/checkout" (click)="addDevice(availableDevices[2].id)" class="btn btn-success">Select</a></td> -->
             </tr>
         </tbody>
     </table>

@@ -5,20 +5,20 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Minutes</th>
                 <th>Monthly Cost</th>
                 <th>Devices</th>
+                <th>Device Cost</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let plan of userPlans; let i = index">
                 <td>{{ i }}</td>
+                <!-- <td>{{ lookupPlan(tempContract.planId).name }}</td> -->
                 <td>{{ plan.name }}</td>
-                <td>{{ plan.minutes }}</td>
                 <td>{{ plan.monthlyCost }}</td>
-                <!-- <td>{{ plan.devices[0].type }}</td> -->
-                <td>x</td>
+                <td>{{ plan.devices[0].type }}</td>
+                <td>{{ plan.devices[0].price }}</td>
                 <td>
                     <button type="button" (click)="removeContract(i)" class="btn btn-danger">Delete contract</button>
                 </td>
