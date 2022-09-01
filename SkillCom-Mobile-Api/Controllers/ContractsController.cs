@@ -13,55 +13,55 @@ namespace SkillCom_Mobile_Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DevicesController : ControllerBase
+    public class ContractsController : ControllerBase
     {
         private readonly SkillComDbContext _context;
 
-        public DevicesController(SkillComDbContext context)
+        public ContractsController(SkillComDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/Devices
+        // GET: api/Contracts
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Device>>> GetDevice()
+        public async Task<ActionResult<IEnumerable<Contract>>> GetContract()
         {
-          if (_context.Device == null)
+          if (_context.Contract == null)
           {
               return NotFound();
           }
-            return await _context.Device.ToListAsync();
+            return await _context.Contract.ToListAsync();
         }
 
-        // GET: api/Devices/5
+        // GET: api/Contracts/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Device>> GetDevice(int id)
+        public async Task<ActionResult<Contract>> GetContract(int id)
         {
-          if (_context.Device == null)
+          if (_context.Contract == null)
           {
               return NotFound();
           }
-            var device = await _context.Device.FindAsync(id);
+            var contract = await _context.Contract.FindAsync(id);
 
-            if (device == null)
+            if (contract == null)
             {
                 return NotFound();
             }
 
-            return device;
+            return contract;
         }
 
-        // PUT: api/Devices/5
+        // PUT: api/Contracts/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutDevice(int id, Device device)
+        public async Task<IActionResult> PutContract(int id, Contract contract)
         {
-            if (id != device.Id)
+            if (id != contract.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(device).State = EntityState.Modified;
+            _context.Entry(contract).State = EntityState.Modified;
 
             try
             {
@@ -69,7 +69,7 @@ namespace SkillCom_Mobile_Api.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!DeviceExists(id))
+                if (!ContractExists(id))
                 {
                     return NotFound();
                 }
@@ -82,51 +82,52 @@ namespace SkillCom_Mobile_Api.Controllers
             return NoContent();
         }
 
-        // POST: api/Devices
+        // POST: api/Contracts
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Device>> PostDevice(DeviceDTO deviceDto)
+        public async Task<ActionResult<Contract>> PostContract(ContractDTO contractDto)
         {
-          if (_context.Device == null)
+          if (_context.Contract == null)
           {
-              return Problem("Entity set 'SkillComDbContext.Device'  is null.");
+              return Problem("Entity set 'SkillComDbContext.Contract'  is null.");
           }
-
-            Device device = new Device
+            Contract contract = new Contract
             {
-                Type = deviceDto.Type,
-                PhoneNumber = deviceDto.PhoneNumber,
-                Price = deviceDto.Price
+                UserId = contractDto.UserId,
+                DeviceId = contractDto.DeviceId,
+                PlanId = contractDto.PlanId
             };
-            _context.Device.Add(device);
+
+
+            _context.Contract.Add(contract);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetDevice", new { id = device.Id }, device);
+            return CreatedAtAction("GetContract", new { id = contract.Id }, contract);
         }
 
-        // DELETE: api/Devices/5
+        // DELETE: api/Contracts/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteDevice(int id)
+        public async Task<IActionResult> DeleteContract(int id)
         {
-            if (_context.Device == null)
+            if (_context.Contract == null)
             {
                 return NotFound();
             }
-            var device = await _context.Device.FindAsync(id);
-            if (device == null)
+            var contract = await _context.Contract.FindAsync(id);
+            if (contract == null)
             {
                 return NotFound();
             }
 
-            _context.Device.Remove(device);
+            _context.Contract.Remove(contract);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool DeviceExists(int id)
+        private bool ContractExists(int id)
         {
-            return (_context.Device?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Contract?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

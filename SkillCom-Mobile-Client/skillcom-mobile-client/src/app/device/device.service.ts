@@ -1,17 +1,32 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { environment } from 'src/environments/environment';
 import { Device } from './device';
+import { Injectable } from '@angular/core';
+import { HttpHeaders } from '@angular/common/http';
+import { from,of,throwError,catchError } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class DeviceService {
   private userUrl: string = `${environment.apiUrl}/Device`
+  private deviceUrl: string = 'https://localhost:7080/api/Devices'
+
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':'application/json'
+    })
+  }
   constructor(private http: HttpClient) { }
 
+  getDevices(): Observable<Device[]> {
+    console.log("retrieving devices")
+    return this.http.get<Device[]>(this.deviceUrl,this.httpOptions)
+    
+  }
+  
   tempDeviceData: Device[] = [
     {"id":1,"phoneNumber":"1","price":1200,"type":"iPhone13"},
     {"id":2,"phoneNumber":"2","price":1150,"type":"Pixel6a"},

@@ -15,12 +15,12 @@ export class UserIndexComponent implements OnInit {
   constructor(private userService: UserService, private planService: PlanService) { }
 
   ngOnInit(): void {
-    this.userPlans = this.userService.tempUserData[0].plans
+    // this.userPlans = this.userService.tempUserData[0].plans
   }
 
-  removeContract(i: number): void {
-    this.userService.removePlan(i)
-  }
+  // removeContract(i: number): void {
+  //   this.userService.removePlan(i)
+  // }
 
   lookupPlan(id: number): Plan {
     return this.planService.tempPlanData[id-1]

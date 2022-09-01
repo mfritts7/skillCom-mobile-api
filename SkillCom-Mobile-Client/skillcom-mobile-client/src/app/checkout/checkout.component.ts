@@ -23,12 +23,12 @@ export class CheckoutComponent implements OnInit {
   ngOnInit(): void {
     this.availablePlans = this.planService.tempPlanData
     this.availableDevices = this.deviceService.tempDeviceData
-    this.newPlan = this.userService.newPlan
+    //this.newPlan = this.userService.newPlan
     // this.tempContract = this.planService.tempContract
   }
 
   addContract(): void {
-    this.userService.tempUserData[0].plans.push(this.userService.newPlan)
+    //this.userService.tempUserData[0].plans.push(this.userService.newPlan)
   }
 
 }

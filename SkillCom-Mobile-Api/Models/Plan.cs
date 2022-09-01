@@ -3,14 +3,10 @@
     public class Plan
     {
         public int Id { get; set; }
-        public int Minutes { get; set; }
         public string PlanName { get; set; }
-        //public int PersonId { get; set; }
-
+        public int MonthlyPrice { get; set; }
 
         //Navigation Properties
-        public User User { get; set; }
-        public virtual ICollection<Device> Devices { get; set; }
-
+        public virtual List<Contract> Contracts { get; set; }
     }
 }

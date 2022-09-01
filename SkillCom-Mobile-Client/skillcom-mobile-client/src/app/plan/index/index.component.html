@@ -1,3 +1,4 @@
+
 <div class="container">
     <h1>Choose a plan</h1>
     <table class="table table-bordered table-striped">
@@ -10,15 +11,9 @@
         </thead>
         <tbody>
             <tr *ngFor="let plan of availablePlans">
-                <td>{{ plan.name }}</td>
-                <td>{{ plan.monthlyCost }}</td>
-                <td><a routerLink="/device" (click)="(addPlan(plan))" class="btn btn-success">Select</a></td>
-
-                <!-- <td><a routerLink="/device" (click)="(addPlan(0))" class="btn btn-success">Select</a></td> -->
-
-                <!-- <td><a routerLink="/device" (click)="(addPlan(availablePlans[0].id))" class="btn btn-success">Select</a></td>
-                <td><a routerLink="/device" (click)="(addPlan(availablePlans[1].id))" class="btn btn-success">Select</a></td>
-                <td><a routerLink="/device" (click)="(addPlan(availablePlans[2].id))" class="btn btn-success">Select</a></td> -->
+                <td>{{ plan.planName }}</td>
+                <td>{{ plan.monthlyPrice }}</td>
+                <td><a routerLink="/device" (click)="(addPlan(plan.id))" class="btn btn-success">Select</a></td>
             </tr>
         </tbody>
     </table>

@@ -6,9 +6,10 @@
         public string PhoneNumber { get; set; }
         public int Price { get; set; }
         public string Type { get; set; }
-        //public int PhonePlanId { get; set; }
 
-        public Plan Plan { get; set; }
+
+        public virtual List<Contract> Contracts { get; set; }
+
 
     }
 }
