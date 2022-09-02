@@ -4,6 +4,11 @@ import { Device } from '../device/device';
 import { PlanService } from '../plan/plan.service';
 import { Plan } from '../plan/plan';
 import { UserService } from '../user/user.service';
+import { ContractService } from '../contract/contract.service';
+import { Contract } from '../contract/contract';
+import {FormGroup,FormControl,Validators} from '@angular/forms';
+import { ContractDTO } from '../contract/contractDTO';
+
 
 @Component({
   selector: 'app-checkout',
@@ -13,17 +18,17 @@ import { UserService } from '../user/user.service';
 export class CheckoutComponent implements OnInit {
   chosenPlan!: Plan
   chosenDevice!: Device
-
-  constructor(private userService: UserService, private planService: PlanService, private deviceService: DeviceService) { }
+  contractToPost : ContractDTO ={"userId": 1,"planId":2,"deviceId":2}
+  
+  constructor(private userService: UserService, private planService: PlanService, private deviceService: DeviceService,
+    private contractService: ContractService) { }
   
 
   ngOnInit(): void {
-    this.chosenPlan = this.planService.newPlan;
+    this.chosenPlan = this.deviceService.newPlan;
     this.chosenDevice = this.deviceService.newDevice;
   }
 
   addContract(): void {
-    // this.userService.tempUserData[0].plans.push(this.userService.newPlan)
-  }
-
+this.contractService.createContract(this.contractToPost).subscribe(() =>console.log("Added Contract"))  }
 }

@@ -3,10 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from '../user';
 import { Contract } from 'src/app/contract/contract';
+import { ContractDTO } from 'src/app/contract/contractDTO';
 import { PlanService } from 'src/app/plan/plan.service';
 import { Plan } from 'src/app/plan/plan';
 import { DeviceService } from 'src/app/device/device.service';
 import { Device } from 'src/app/device/device';
+import { ContractService } from 'src/app/contract/contract.service';
+
 
 @Component({
   selector: 'app-index',
@@ -18,8 +21,13 @@ export class UserIndexComponent implements OnInit {
   userContracts!: Contract[]
   availablePlans!: Plan[]
   availableDevices!: Device[]
+  
 
-  constructor(private userService: UserService, private planService: PlanService, private deviceService: DeviceService) { }
+ 
+
+
+  constructor(private userService: UserService, private planService: PlanService, private deviceService: DeviceService,
+    private contractService: ContractService) { }
 
   ngOnInit(): void {
     this.retrieveUser();
@@ -34,7 +42,7 @@ export class UserIndexComponent implements OnInit {
   }
 
   retrieveContracts() {
-    this.userService.getContracts(this.activeUser.id).subscribe(c => this.userContracts = c);
+    this.contractService.getContracts().subscribe(c => this.userContracts = c);
   }
 
   retrievePlans() {
@@ -52,4 +60,11 @@ export class UserIndexComponent implements OnInit {
   lookupDevice(id: number): Device {
     return this.availableDevices.filter(d => d["id"] == id)[0];
   }
+
+  deleteContract(id:number){
+    this.userService.deleteContract(id).subscribe(contract => {
+      this.userContracts = this.userContracts.filter(contract => contract.id !== id);
+      console.log('Contract deleted successfully!');
+  })
+}
 }

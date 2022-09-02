@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, from, of, throwError, catchError } from 'rxjs';
-
+import { Plan } from '../plan/plan';
 import { environment } from 'src/environments/environment';
 import { Device } from './device';
 
@@ -10,6 +10,9 @@ import { Device } from './device';
   providedIn: 'root'
 })
 export class DeviceService {
+
+  newPlan: Plan = {"id":69,"planName":"TestPlan","monthlyPrice":69};
+
   private deviceUrl: string = `${environment.apiUrl}/Devices`;
   private httpOptions = {
     headers: new HttpHeaders({

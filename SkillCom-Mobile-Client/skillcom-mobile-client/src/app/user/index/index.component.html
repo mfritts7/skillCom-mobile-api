@@ -3,23 +3,20 @@
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Monthly Cost</th>
-                <th>Devices</th>
-                <th>Device Cost</th>
+                <th>UserId</th>
+                <th>planId</th>
+                <th>deviceId</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let contract of userContracts; let i = index">
-                <td>{{ i }}</td>
-                <td>{{ lookupPlan(contract.planId).planName }}</td>
-                <td>{{ lookupPlan(contract.planId).monthlyPrice }}</td>
-                <td>{{ lookupDevice(contract.deviceId).type }}</td>
-                <td>{{ lookupDevice(contract.deviceId).price }}</td>
+            <tr *ngFor="let contract of userContracts">
+
+                <td>{{ contract.userId }}</td>
+                <td>{{ contract.planId }}</td>
+                <td>{{ contract.deviceId }}</td>
                 <td>
-                    <button type="button" class="btn btn-danger">Delete contract</button>
+                    <button type="button" (click)="deleteContract(contract.id)" class="btn btn-danger">Delete contract</button>
                 </td>
             </tr>
         </tbody>

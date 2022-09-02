@@ -1,5 +1,4 @@
-export interface Contract {
-    id : number
+export interface ContractDTO {
     userId: number
     planId: number
     deviceId: number

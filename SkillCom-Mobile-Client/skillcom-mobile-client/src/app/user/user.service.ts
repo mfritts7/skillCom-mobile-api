@@ -5,11 +5,18 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from './user';
 import { Contract } from '../contract/contract';
+import { ContractDTO } from '../contract/contractDTO';
+import { Plan } from '../plan/plan';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  //global contract to post
+  //tempContract
+  newContract: ContractDTO = {"userId":1,"planId":-1,"deviceId":-1};
+
+
   private userUrl: string = `${environment.apiUrl}/User`;
   private contractUrl: string = `${environment.apiUrl}/Contracts`;
   private httpOptions = {
@@ -17,6 +24,8 @@ export class UserService {
       'Content-Type':'application/json'
     })
   };
+contractToPost : ContractDTO ={"userId": 1,"planId":2,"deviceId":1}
+
   // tempUserData: User[] = [
   //   {"id":1,"name":"John Cena","email":"WrestleMania@gmail.com"},
   //   {"id":2,"name":"Walter White","email":"WeNeedToCookJesse@yahoo.com"},
@@ -45,5 +54,8 @@ export class UserService {
   // needs to be implemented on back end
   addContract(newContract: Contract): Observable<Contract> {
      return this.http.post<Contract>(this.contractUrl, newContract);
+  }
+  deleteContract(id:number) : Observable<Contract> {
+    return this.http.delete<Contract>(this.contractUrl + '/'+id,this.httpOptions)
   }
 }
