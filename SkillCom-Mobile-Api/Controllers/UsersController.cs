@@ -26,10 +26,11 @@ namespace SkillCom_Mobile_Api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
-          if (_context.User == null)
-          {
-              return NotFound();
-          }
+            if (_context.User == null)
+            {
+                return NotFound();
+            }
+
             return await _context.User.ToListAsync();
         }
 
@@ -37,10 +38,11 @@ namespace SkillCom_Mobile_Api.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
-          if (_context.User == null)
-          {
-              return NotFound();
-          }
+            if (_context.User == null)
+            {
+                return NotFound();
+            }
+
             var user = await _context.User.FindAsync(id);
 
             if (user == null)
@@ -87,17 +89,16 @@ namespace SkillCom_Mobile_Api.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(UserDTO userDto)
         {
-          if (_context.User == null)
-          {
-              return Problem("Entity set 'SkillComDbContext.User'  is null.");
-          }
+            if (_context.User == null)
+            {
+                return Problem("Entity set 'SkillComDbContext.User'  is null.");
+            }
 
             User user = new User
             {
                 Name = userDto.Name,
                 Email = userDto.Email
             };
-
 
             _context.User.Add(user);
             await _context.SaveChangesAsync();
@@ -113,7 +114,9 @@ namespace SkillCom_Mobile_Api.Controllers
             {
                 return NotFound();
             }
+
             var user = await _context.User.FindAsync(id);
+
             if (user == null)
             {
                 return NotFound();

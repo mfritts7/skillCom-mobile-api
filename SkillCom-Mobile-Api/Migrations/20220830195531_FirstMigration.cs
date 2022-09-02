@@ -55,14 +55,15 @@ namespace SkillCom_Mobile_Api.Migrations
                 name: "Contract",
                 columns: table => new
                 {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<int>(type: "int", nullable: false),
                     PlanId = table.Column<int>(type: "int", nullable: false),
-                    DeviceId = table.Column<int>(type: "int", nullable: false),
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    DeviceId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Contract", x => new { x.UserId, x.DeviceId, x.PlanId });
+                    table.PrimaryKey("PK_Contract", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Contract_Device_DeviceId",
                         column: x => x.DeviceId,

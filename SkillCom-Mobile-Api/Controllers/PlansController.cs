@@ -26,10 +26,11 @@ namespace SkillCom_Mobile_Api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Plan>>> GetPlans()
         {
-          if (_context.Plan == null)
-          {
-              return NotFound();
-          }
+            if (_context.Plan == null)
+            {
+                return NotFound();
+            }
+
             return await _context.Plan.ToListAsync();
         }
 
@@ -37,10 +38,11 @@ namespace SkillCom_Mobile_Api.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Plan>> GetPlan(int id)
         {
-          if (_context.Plan == null)
-          {
-              return NotFound();
-          }
+            if (_context.Plan == null)
+            {
+                return NotFound();
+            }
+
             var plan = await _context.Plan.FindAsync(id);
 
             if (plan == null)
@@ -87,10 +89,10 @@ namespace SkillCom_Mobile_Api.Controllers
         [HttpPost]
         public async Task<ActionResult<Plan>> PostPlan(PlanDTO planDto)
         {
-          if (_context.Plan == null)
-          {
-              return Problem("Entity set 'SkillComDbContext.Plan'  is null.");
-          }
+            if (_context.Plan == null)
+            {
+                return Problem("Entity set 'SkillComDbContext.Plan'  is null.");
+            }
 
             Plan plan = new Plan
             {
@@ -113,7 +115,9 @@ namespace SkillCom_Mobile_Api.Controllers
             {
                 return NotFound();
             }
+
             var plan = await _context.Plan.FindAsync(id);
+
             if (plan == null)
             {
                 return NotFound();
