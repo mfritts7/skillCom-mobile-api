@@ -27,7 +27,6 @@ export class PlanService {
   constructor(private http: HttpClient) { }
 
   getPlans(): Observable<Plan[]> {
-    console.log("Getting plans");
     return this.http.get<Plan[]>(this.planUrl, this.httpOptions);
   }
 }

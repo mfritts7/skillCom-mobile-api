@@ -12,13 +12,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let plan of userPlans; let i = index">
+            <tr *ngFor="let contract of userContracts; let i = index">
                 <td>{{ i }}</td>
-                <!-- <td>{{ lookupPlan(tempContract.planId).name }}</td> -->
-                <td>{{ plan.planName }}</td>
-                <td>{{ plan.monthlyPrice }}</td>
-                <!-- <td>{{ plan.devices[0].type }}</td>
-                <td>{{ plan.devices[0].price }}</td> -->
+                <td>{{ lookupPlan(contract.planId).planName }}</td>
+                <td>{{ lookupPlan(contract.planId).monthlyPrice }}</td>
+                <td>{{ lookupDevice(contract.deviceId).type }}</td>
+                <td>{{ lookupDevice(contract.deviceId).price }}</td>
                 <td>
                     <button type="button" class="btn btn-danger">Delete contract</button>
                 </td>

@@ -12,7 +12,7 @@ import { Device } from '../device';
   styleUrls: ['./index.component.css']
 })
 export class DeviceIndexComponent implements OnInit {
-  availableDevices: Device[] = [];
+  availableDevices!: Device[];
   chosenPlan!: Plan;
 
   constructor(private deviceService: DeviceService, private userService: UserService, private planService: PlanService) { }
@@ -25,7 +25,7 @@ export class DeviceIndexComponent implements OnInit {
   }
 
   retrieveDevices() : void{
-    this.deviceService.getDevices().subscribe(availableDevices => this.availableDevices = availableDevices)
+    this.deviceService.getDevices().subscribe(d => this.availableDevices = d)
   }
 
   addDeviceWithId(id: number) {

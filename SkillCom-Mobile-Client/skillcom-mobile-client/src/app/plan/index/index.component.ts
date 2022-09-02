@@ -10,7 +10,7 @@ import { Plan } from '../plan'
   styleUrls: ['./index.component.css']
 })
 export class PlanIndexComponent implements OnInit {
-  availablePlans: Plan[] = [];
+  availablePlans!: Plan[];
 
   constructor(private planService: PlanService, private userService: UserService) { }
 
@@ -19,7 +19,7 @@ export class PlanIndexComponent implements OnInit {
   }
 
   retrievePlans() {
-    this.planService.getPlans().subscribe(plans => this.availablePlans = plans);
+    this.planService.getPlans().subscribe(p => this.availablePlans = p);
   }
 
   addPlanWithId(id: number) {

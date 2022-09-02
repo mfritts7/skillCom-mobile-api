@@ -29,7 +29,6 @@ export class DeviceService {
   constructor(private http: HttpClient) { }
 
   getDevices(): Observable<Device[]> {
-    console.log("Getting devices")
     return this.http.get<Device[]>(this.deviceUrl,this.httpOptions)
   }
 }
