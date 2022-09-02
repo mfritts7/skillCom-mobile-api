@@ -35,13 +35,13 @@ export class UserIndexComponent implements OnInit {
   }
 
   retrieveContracts() {
-    //this.userService.getContracts(this.activeUser.id).subscribe(c => this.userContracts = c);
+    // this.contractService.getContracts(this.activeUser.id).subscribe(c => this.userContracts = c);
     this.contractService.getContractsTest().subscribe(c => this.userContracts = c);
   }
 
   deleteContract(contractId: number) {
-    this.contractService.deleteContract(contractId).subscribe(contract => {
-      this.userContracts = this.userContracts.filter(contract => contract.id !== contractId);
+    this.contractService.deleteContract(contractId).subscribe(() => {
+      this.userContracts = this.userContracts.filter(c => c.id !== contractId);
     })
   }
 
