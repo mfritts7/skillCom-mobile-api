@@ -32,12 +32,13 @@ namespace SkillCom_Mobile_Api.Controllers
             {
                 return BadRequest("User Not Found");
             }
+
             if (VerifyPasswordHash(request.Password, user.PasswordHash, user.PasswordSalt))
             {
                 return BadRequest("Wrong Password");
             }
-            return Ok("My Token");
 
+            return Ok("My Token");
         }
         
         

@@ -18,7 +18,6 @@ import { ContractService } from 'src/app/contract/contract.service';
 })
 export class UserIndexComponent implements OnInit {
   activeUser!: User
-  userContracts!: Contract[]
   availablePlans!: Plan[]
   availableDevices!: Device[]
   
@@ -31,9 +30,9 @@ export class UserIndexComponent implements OnInit {
 
   ngOnInit(): void {
     this.retrieveUser();
-    this.retrieveContracts();
     this.retrievePlans();
     this.retrieveDevices();
+    this.retrieveContracts();
   }
 
   retrieveUser() {
@@ -44,6 +43,7 @@ export class UserIndexComponent implements OnInit {
   retrieveContracts() {
     this.contractService.getContracts().subscribe(c => this.userContracts = c);
   }
+
 
   retrievePlans() {
     this.planService.getPlans().subscribe(p => this.availablePlans = p);

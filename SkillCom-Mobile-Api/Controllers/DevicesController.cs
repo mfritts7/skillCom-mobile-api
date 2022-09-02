@@ -26,10 +26,11 @@ namespace SkillCom_Mobile_Api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Device>>> GetDevices()
         {
-          if (_context.Device == null)
-          {
-              return NotFound();
-          }
+            if (_context.Device == null)
+            {
+                return NotFound();
+            }
+
             return await _context.Device.ToListAsync();
         }
 
@@ -37,10 +38,11 @@ namespace SkillCom_Mobile_Api.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Device>> GetDevice(int id)
         {
-          if (_context.Device == null)
-          {
-              return NotFound();
-          }
+            if (_context.Device == null)
+            {
+                return NotFound();
+            }
+
             var device = await _context.Device.FindAsync(id);
 
             if (device == null)
@@ -87,10 +89,10 @@ namespace SkillCom_Mobile_Api.Controllers
         [HttpPost]
         public async Task<ActionResult<Device>> PostDevice(DeviceDTO deviceDto)
         {
-          if (_context.Device == null)
-          {
-              return Problem("Entity set 'SkillComDbContext.Device'  is null.");
-          }
+            if (_context.Device == null)
+            {
+                return Problem("Entity set 'SkillComDbContext.Device'  is null.");
+            }
 
             Device device = new Device
             {
@@ -98,6 +100,7 @@ namespace SkillCom_Mobile_Api.Controllers
                 PhoneNumber = deviceDto.PhoneNumber,
                 Price = deviceDto.Price
             };
+
             _context.Device.Add(device);
             await _context.SaveChangesAsync();
 
@@ -112,7 +115,9 @@ namespace SkillCom_Mobile_Api.Controllers
             {
                 return NotFound();
             }
+
             var device = await _context.Device.FindAsync(id);
+
             if (device == null)
             {
                 return NotFound();

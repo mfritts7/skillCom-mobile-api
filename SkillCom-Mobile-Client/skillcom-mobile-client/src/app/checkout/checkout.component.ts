@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
+import { UserService } from '../user/user.service';
+import { Contract } from '../contract/contract';
 import { DeviceService } from '../device/device.service';
 import { Device } from '../device/device';
 import { PlanService } from '../plan/plan.service';
@@ -27,6 +30,13 @@ export class CheckoutComponent implements OnInit {
   ngOnInit(): void {
     this.chosenPlan = this.deviceService.newPlan;
     this.chosenDevice = this.deviceService.newDevice;
+    // this.userService.getUser().subscribe(u => this.newContract.userId = u.id);
+    this.newContract.userId = this.userService.getUserTest().id;
+    console.log(this.newContract.userId);
+    this.newContract.planId = this.planService.newPlan.id;
+    console.log(this.newContract.planId);
+    this.newContract.deviceId = this.deviceService.newDevice.id;
+    console.log(this.newContract.deviceId);
   }
 
   addContract(): void {

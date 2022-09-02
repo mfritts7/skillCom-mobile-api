@@ -13,7 +13,7 @@ namespace SkillCom_Mobile_Api.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Contract>().HasKey(t => new { t.UserId, t.DeviceId, t.PlanId });
+            modelBuilder.Entity<Contract>().HasKey(t => t.Id);
 
             modelBuilder.Entity<Contract>()
                 .HasOne(t => t.User)

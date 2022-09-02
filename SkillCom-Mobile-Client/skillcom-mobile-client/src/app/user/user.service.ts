@@ -45,13 +45,17 @@ contractToPost : ContractDTO ={"userId": 1,"planId":2,"deviceId":1}
   addUser(user: User): Observable<User> {
     return this.http.post<User>(this.userUrl, user);
   }
-  
+
   getContracts(userId: number): Observable<Contract[]> {
     let url = `${this.contractUrl}/User/${userId}`;
     return this.http.get<Contract[]>(url);
   }
 
-  // needs to be implemented on back end
+  // just for testing - fetches all contracts by all users, instead of one user
+  getContractsTest(): Observable<Contract[]> {
+    return this.http.get<Contract[]>(this.contractUrl, this.httpOptions);
+  }
+
   addContract(newContract: Contract): Observable<Contract> {
      return this.http.post<Contract>(this.contractUrl, newContract);
   }

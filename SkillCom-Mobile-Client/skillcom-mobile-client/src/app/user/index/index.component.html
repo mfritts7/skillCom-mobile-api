@@ -16,7 +16,7 @@
                 <td>{{ contract.planId }}</td>
                 <td>{{ contract.deviceId }}</td>
                 <td>
-                    <button type="button" (click)="deleteContract(contract.id)" class="btn btn-danger">Delete contract</button>
+                    <button type="button" (click)="deleteContract(contract.id)" (click)="deleteContract(contract.id)" class="btn btn-danger">Delete contract</button>
                 </td>
             </tr>
         </tbody>

@@ -26,10 +26,11 @@ namespace SkillCom_Mobile_Api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Contract>>> GetContracts()
         {
-          if (_context.Contract == null)
-          {
-              return NotFound();
-          }
+            if (_context.Contract == null)
+            {
+                return NotFound();
+            }
+
             return await _context.Contract.ToListAsync();
         }
 
@@ -41,6 +42,7 @@ namespace SkillCom_Mobile_Api.Controllers
             {
                 return NotFound();
             }
+
             var contract = await _context.Contract.FindAsync(id);
 
             if (contract == null)
@@ -51,23 +53,24 @@ namespace SkillCom_Mobile_Api.Controllers
             return contract;
         }
 
-        // GET: api/Contracts/User/5
-        [HttpGet("User/{id}")]
-        public async Task<ActionResult<Contract>> GetContractsByUser(int id)
-        {
-            if (_context.Contract == null)
-            {
-                return NotFound();
-            }
-            var contract = await _context.Contract.Where(c => c.User.Where(u => u.Id == id).Any()).ToListAsync();
+        //// GET: api/Contracts/User/5
+        //[HttpGet("User/{id}")]
+        //public async Task<ActionResult<Contract>> GetContractsByUser(int id)
+        //{
+        //    if (_context.Contract == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            if (contract == null)
-            {
-                return NotFound();
-            }
+        //    var contract = await _context.Contract.Where(c => c.User.Where(u => u.Id == id).Any()).ToListAsync();
 
-            return contract;
-        }
+        //    if (contract == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return contract;
+        //}
 
         // PUT: api/Contracts/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -105,10 +108,11 @@ namespace SkillCom_Mobile_Api.Controllers
         [HttpPost]
         public async Task<ActionResult<Contract>> PostContract(ContractDTO contractDto)
         {
-          if (_context.Contract == null)
-          {
-              return Problem("Entity set 'SkillComDbContext.Contract'  is null.");
-          }
+            if (_context.Contract == null)
+            {
+                return Problem("Entity set 'SkillComDbContext.Contract'  is null.");
+            }
+
             Contract contract = new Contract
             {
                 UserId = contractDto.UserId,
@@ -131,7 +135,9 @@ namespace SkillCom_Mobile_Api.Controllers
             {
                 return NotFound();
             }
+
             var contract = await _context.Contract.FindAsync(id);
+
             if (contract == null)
             {
                 return NotFound();
