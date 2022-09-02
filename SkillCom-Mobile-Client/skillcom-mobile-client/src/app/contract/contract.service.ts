@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Contract } from './contract';
 import { ContractDTO } from './contractDTO';
-import { ContractDTO } from './contractDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -31,15 +30,10 @@ export class ContractService {
   }
 
   addContract(newContract: ContractDTO): Observable<Contract> {
-    console.log(`UserService.addContract() was called`);
-    console.log(`${this.contractUrl}`);
-    console.log(`${newContract.userId} ${newContract.planId} ${newContract.deviceId}`)
     return this.http.post<Contract>(this.contractUrl, newContract);
   }
 
   deleteContract(contractId: number): Observable<Contract> {
-    console.log(`UserService.deleteContract(${contractId}) was called`);
-    console.log(`${this.contractUrl}/${contractId}`);
     return this.http.delete<Contract>(`${this.contractUrl}/${contractId}`, this.httpOptions);
   }
 }

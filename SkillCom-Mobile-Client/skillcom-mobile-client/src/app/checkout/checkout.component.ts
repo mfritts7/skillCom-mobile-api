@@ -8,11 +8,6 @@ import { DeviceService } from '../device/device.service';
 import { Device } from '../device/device';
 import { PlanService } from '../plan/plan.service';
 import { Plan } from '../plan/plan';
-import { UserService } from '../user/user.service';
-import { ContractService } from '../contract/contract.service';
-import { Contract } from '../contract/contract';
-import {FormGroup,FormControl,Validators} from '@angular/forms';
-import { ContractDTO } from '../contract/contractDTO';
 
 
 @Component({
@@ -29,14 +24,14 @@ export class CheckoutComponent implements OnInit {
   
 
   ngOnInit(): void {
-    this.chosenPlan = this.deviceService.newPlan;
+    this.chosenPlan = this.planService.newPlan;
     this.chosenDevice = this.deviceService.newDevice;
     this.userService.getUser().subscribe(u => this.newContract.userId = u.id)
     this.newContract.planId = this.planService.newPlan.id;
     this.newContract.deviceId = this.deviceService.newDevice.id;
   }
 
-  addContract(): void {
-    this.contractService.addContract(this.newContract).subscribe();
+  addContract(newContract: ContractDTO): void {
+    this.contractService.addContract(newContract).subscribe();
   }
 }
