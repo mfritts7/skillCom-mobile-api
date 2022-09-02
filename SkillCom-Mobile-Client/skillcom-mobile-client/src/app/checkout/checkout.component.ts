@@ -20,7 +20,12 @@ export class CheckoutComponent implements OnInit {
   chosenDevice!: Device;
   newContract: ContractDTO = {"userId":69,"planId":69,"deviceId":69};
 
-  constructor(private userService: UserService, private contractService: ContractService, private planService: PlanService, private deviceService: DeviceService) { }
+  constructor(
+    private userService: UserService,
+    private contractService: ContractService,
+    private planService: PlanService,
+    private deviceService: DeviceService
+  ) { }
   
 
   ngOnInit(): void {

@@ -8,16 +8,18 @@
                 <th>Monthly Cost</th>
                 <th>Devices</th>
                 <th>Device Cost</th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let contract of userContracts; let i = index">
+            <tr *ngFor="let contract of userContracts">
                 <td>{{ contract.id }}</td>
                 <td>{{ lookupPlan(contract.planId).planName }}</td>
                 <td>{{ lookupPlan(contract.planId).monthlyPrice }}</td>
                 <td>{{ lookupDevice(contract.deviceId).type }}</td>
                 <td>{{ lookupDevice(contract.deviceId).price }}</td>
+                <td>
+                    <a [routerLink]="['/contract/edit', contract.id]" class="btn btn-primary">Edit contract</a>
+                </td>
                 <td>
                     <button type="button" (click)="deleteContract(contract.id)" class="btn btn-danger">Delete contract</button>
                 </td>

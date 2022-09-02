@@ -21,7 +21,12 @@ export class UserIndexComponent implements OnInit {
   availableDevices!: Device[]
   userContracts!: Contract[]
 
-  constructor(private userService: UserService, private contractService: ContractService, private planService: PlanService, private deviceService: DeviceService) { }
+  constructor(
+    private userService: UserService,
+    private contractService: ContractService,
+    private planService: PlanService,
+    private deviceService: DeviceService
+  ) { }
 
   ngOnInit(): void {
     this.retrieveUser();
