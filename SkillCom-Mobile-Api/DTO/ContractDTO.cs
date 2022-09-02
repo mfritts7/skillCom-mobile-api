@@ -5,7 +5,5 @@
         public int UserId { get; set; }
         public int PlanId { get; set; }
         public int DeviceId { get; set; }
-    
-    
     }
 }

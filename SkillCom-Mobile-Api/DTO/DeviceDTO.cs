@@ -2,8 +2,8 @@
 {
     public class DeviceDTO
     {
-        public string PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; } = null!;
         public int Price { get; set; }
-        public string Type { get; set; }
+        public string Type { get; set; } = null!;
     }
 }

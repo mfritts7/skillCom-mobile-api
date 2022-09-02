@@ -24,7 +24,7 @@ namespace SkillCom_Mobile_Api.Controllers
 
         // GET: api/Devices
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Device>>> GetDevice()
+        public async Task<ActionResult<IEnumerable<Device>>> GetDevices()
         {
           if (_context.Device == null)
           {

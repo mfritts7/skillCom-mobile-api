@@ -13,17 +13,19 @@ namespace SkillCom_Mobile_Api.Controllers
         public static User user = new User();
 
         [HttpPost("register")]
+        // Does this need to be async? There are no awaits in the method body
         public async Task<ActionResult<User>> Register(UserDTO request)
         {
             CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt); 
-                user.Email = request.Email;
-                user.PasswordHash = passwordHash;
-                user.PasswordSalt = passwordSalt;
+            user.Email = request.Email;
+            user.PasswordHash = passwordHash;
+            user.PasswordSalt = passwordSalt;
 
-                return Ok(user);
+            return Ok(user);
         }
 
-        [HttpPost("Login")]
+        [HttpPost("login")]
+        // Does this need to be async? There are no awaits in the method body
         public async Task<ActionResult<string>> Login(UserDTO request)
         {
             if (user.Email != request.Email)
