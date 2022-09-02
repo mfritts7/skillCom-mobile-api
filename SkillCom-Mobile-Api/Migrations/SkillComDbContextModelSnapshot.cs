@@ -24,8 +24,11 @@ namespace SkillCom_Mobile_Api.Migrations
 
             modelBuilder.Entity("SkillCom_Mobile_Api.Models.Contract", b =>
                 {
-                    b.Property<int>("UserId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("DeviceId")
                         .HasColumnType("int");
@@ -33,14 +36,16 @@ namespace SkillCom_Mobile_Api.Migrations
                     b.Property<int>("PlanId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Id")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.HasKey("UserId", "DeviceId", "PlanId");
+                    b.HasKey("Id");
 
                     b.HasIndex("DeviceId");
 
                     b.HasIndex("PlanId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Contract");
                 });

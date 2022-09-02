@@ -22,12 +22,6 @@ export class PlanIndexComponent implements OnInit {
     this.planService.getPlans().subscribe(p => this.availablePlans = p);
   }
 
-  addPlanWithId(id: number) {
-    this.planService.newContract.planId = id;
-    console.log("Added planId to newContract");
-    console.log(this.planService.newContract);
-  }
-
   addPlan(plan: Plan) {
     this.planService.newPlan = JSON.parse(JSON.stringify(plan))
   }

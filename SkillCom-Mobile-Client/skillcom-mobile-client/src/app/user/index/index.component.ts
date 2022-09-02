@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from '../user';
 import { Contract } from 'src/app/contract/contract';
+import { ContractService } from 'src/app/contract/contract.service';
 import { PlanService } from 'src/app/plan/plan.service';
 import { Plan } from 'src/app/plan/plan';
 import { DeviceService } from 'src/app/device/device.service';
@@ -19,7 +20,7 @@ export class UserIndexComponent implements OnInit {
   availableDevices!: Device[]
   userContracts!: Contract[]
 
-  constructor(private userService: UserService, private planService: PlanService, private deviceService: DeviceService) { }
+  constructor(private userService: UserService, private contractService: ContractService, private planService: PlanService, private deviceService: DeviceService) { }
 
   ngOnInit(): void {
     this.retrieveUser();
@@ -29,17 +30,18 @@ export class UserIndexComponent implements OnInit {
   }
 
   retrieveUser() {
-    // this.userService.getUser().subscribe(u => this.activeUser = u);
-    this.activeUser = this.userService.getUserTest();
+    this.userService.getUser().subscribe(u => this.activeUser = u);
   }
 
   retrieveContracts() {
     //this.userService.getContracts(this.activeUser.id).subscribe(c => this.userContracts = c);
-    this.userService.getContractsTest().subscribe(c => this.userContracts = c);
+    this.contractService.getContractsTest().subscribe(c => this.userContracts = c);
   }
 
   deleteContract(contractId: number) {
-    this.userService.deleteContract(contractId);
+    this.contractService.deleteContract(contractId).subscribe(contract => {
+      this.userContracts = this.userContracts.filter(contract => contract.id !== contractId);
+    })
   }
 
   retrievePlans() {

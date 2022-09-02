@@ -28,12 +28,6 @@ export class DeviceIndexComponent implements OnInit {
     this.deviceService.getDevices().subscribe(d => this.availableDevices = d)
   }
 
-  addDeviceWithId(id: number) {
-    this.planService.newContract.deviceId = id;
-    console.log("Added deviceId to newContract");
-    console.log(this.planService.newContract);
-  }
-
   addDevice(device: Device) {
     this.deviceService.newDevice = JSON.parse(JSON.stringify(device))
   }

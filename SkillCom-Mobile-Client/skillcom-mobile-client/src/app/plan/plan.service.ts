@@ -4,7 +4,6 @@ import { Observable, from, of, throwError, catchError } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 import { Plan } from './plan';
-import { Contract } from 'src/app/contract/contract';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +15,6 @@ export class PlanService {
       'Content-Type':'application/json'
     })
   };
-  newContract: Contract = {"id":-1,"userId":-1,"planId":-1,"deviceId":-1};
   newPlan!: Plan;
   // tempPlanData: Plan[] = [
   //   {"id":1,"planName":"Basic","monthlyPrice":10},
