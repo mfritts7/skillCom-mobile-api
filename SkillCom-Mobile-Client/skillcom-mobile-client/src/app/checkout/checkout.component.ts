@@ -8,6 +8,12 @@ import { DeviceService } from '../device/device.service';
 import { Device } from '../device/device';
 import { PlanService } from '../plan/plan.service';
 import { Plan } from '../plan/plan';
+import { UserService } from '../user/user.service';
+import { ContractService } from '../contract/contract.service';
+import { Contract } from '../contract/contract';
+import {FormGroup,FormControl,Validators} from '@angular/forms';
+import { ContractDTO } from '../contract/contractDTO';
+
 
 @Component({
   selector: 'app-checkout',
@@ -23,7 +29,7 @@ export class CheckoutComponent implements OnInit {
   
 
   ngOnInit(): void {
-    this.chosenPlan = this.planService.newPlan;
+    this.chosenPlan = this.deviceService.newPlan;
     this.chosenDevice = this.deviceService.newDevice;
     this.userService.getUser().subscribe(u => this.newContract.userId = u.id)
     this.newContract.planId = this.planService.newPlan.id;

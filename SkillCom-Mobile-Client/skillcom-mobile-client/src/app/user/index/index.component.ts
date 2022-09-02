@@ -8,6 +8,8 @@ import { PlanService } from 'src/app/plan/plan.service';
 import { Plan } from 'src/app/plan/plan';
 import { DeviceService } from 'src/app/device/device.service';
 import { Device } from 'src/app/device/device';
+import { ContractService } from 'src/app/contract/contract.service';
+
 
 @Component({
   selector: 'app-index',
@@ -59,4 +61,11 @@ export class UserIndexComponent implements OnInit {
   lookupDevice(id: number): Device {
     return this.availableDevices.filter(d => d["id"] == id)[0];
   }
+
+  deleteContract(id:number){
+    this.userService.deleteContract(id).subscribe(contract => {
+      this.userContracts = this.userContracts.filter(contract => contract.id !== id);
+      console.log('Contract deleted successfully!');
+  })
+}
 }

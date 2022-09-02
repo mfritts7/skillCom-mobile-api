@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Contract } from './contract';
 import { ContractDTO } from './contractDTO';
+import { ContractDTO } from './contractDTO';
 
 @Injectable({
   providedIn: 'root'

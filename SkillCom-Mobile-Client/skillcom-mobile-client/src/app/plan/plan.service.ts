@@ -9,6 +9,8 @@ import { Plan } from './plan';
   providedIn: 'root'
 })
 export class PlanService {
+newPlan!:Plan
+
   private planUrl: string = `${environment.apiUrl}/Plans`;
   private httpOptions = {
     headers: new HttpHeaders({

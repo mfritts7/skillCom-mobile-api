@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core'
 import { UserService } from 'src/app/user/user.service'
 import { PlanService } from '../plan.service'
 import { Plan } from '../plan'
+import { DeviceService } from 'src/app/device/device.service';
 
 @Component({
   selector: 'app-index',
@@ -12,7 +13,7 @@ import { Plan } from '../plan'
 export class PlanIndexComponent implements OnInit {
   availablePlans!: Plan[];
 
-  constructor(private planService: PlanService, private userService: UserService) { }
+  constructor(private planService: PlanService, private userService: UserService,private deviceService: DeviceService) { }
 
   ngOnInit() {
     this.retrievePlans();

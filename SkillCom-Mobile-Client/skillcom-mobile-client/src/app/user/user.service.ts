@@ -15,6 +15,8 @@ export class UserService {
       'Content-Type':'application/json'
     })
   };
+contractToPost : ContractDTO ={"userId": 1,"planId":2,"deviceId":1}
+
   // tempUserData: User[] = [
   //   {"id":1,"name":"John Cena","email":"WrestleMania@gmail.com"},
   //   {"id":2,"name":"Walter White","email":"WeNeedToCookJesse@yahoo.com"},
