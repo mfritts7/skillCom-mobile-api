@@ -10,7 +10,7 @@ import { Contract } from '../contract/contract';
   providedIn: 'root'
 })
 export class UserService {
-  private userUrl: string = `${environment.apiUrl}/User`;
+  private userUrl: string = `${environment.apiUrl}/Users`;
   private contractUrl: string = `${environment.apiUrl}/Contracts`;
   private httpOptions = {
     headers: new HttpHeaders({
@@ -36,14 +36,23 @@ export class UserService {
   addUser(user: User): Observable<User> {
     return this.http.post<User>(this.userUrl, user);
   }
-  
+
   getContracts(userId: number): Observable<Contract[]> {
     let url = `${this.contractUrl}/User/${userId}`;
     return this.http.get<Contract[]>(url);
   }
 
-  // needs to be implemented on back end
+  // just for testing - fetches all contracts by all users, instead of one user
+  getContractsTest(): Observable<Contract[]> {
+    return this.http.get<Contract[]>(this.contractUrl, this.httpOptions);
+  }
+
   addContract(newContract: Contract): Observable<Contract> {
      return this.http.post<Contract>(this.contractUrl, newContract);
+  }
+
+  deleteContract(contractId: number): Observable<Contract> {
+    console.log(`UserService.deleteContract(${contractId}) was called`);
+    return this.http.delete<Contract>(`${this.contractUrl}/${contractId}`);
   }
 }

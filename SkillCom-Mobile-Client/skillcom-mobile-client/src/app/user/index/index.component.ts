@@ -15,17 +15,17 @@ import { Device } from 'src/app/device/device';
 })
 export class UserIndexComponent implements OnInit {
   activeUser!: User
-  userContracts!: Contract[]
   availablePlans!: Plan[]
   availableDevices!: Device[]
+  userContracts!: Contract[]
 
   constructor(private userService: UserService, private planService: PlanService, private deviceService: DeviceService) { }
 
   ngOnInit(): void {
     this.retrieveUser();
-    this.retrieveContracts();
     this.retrievePlans();
     this.retrieveDevices();
+    this.retrieveContracts();
   }
 
   retrieveUser() {
@@ -34,7 +34,12 @@ export class UserIndexComponent implements OnInit {
   }
 
   retrieveContracts() {
-    this.userService.getContracts(this.activeUser.id).subscribe(c => this.userContracts = c);
+    //this.userService.getContracts(this.activeUser.id).subscribe(c => this.userContracts = c);
+    this.userService.getContractsTest().subscribe(c => this.userContracts = c);
+  }
+
+  deleteContract(contractId: number) {
+    this.userService.deleteContract(contractId);
   }
 
   retrievePlans() {

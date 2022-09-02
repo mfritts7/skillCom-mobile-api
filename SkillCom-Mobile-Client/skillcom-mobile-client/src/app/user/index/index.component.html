@@ -13,13 +13,13 @@
         </thead>
         <tbody>
             <tr *ngFor="let contract of userContracts; let i = index">
-                <td>{{ i }}</td>
+                <td>{{ contract.id }}</td>
                 <td>{{ lookupPlan(contract.planId).planName }}</td>
                 <td>{{ lookupPlan(contract.planId).monthlyPrice }}</td>
                 <td>{{ lookupDevice(contract.deviceId).type }}</td>
                 <td>{{ lookupDevice(contract.deviceId).price }}</td>
                 <td>
-                    <button type="button" class="btn btn-danger">Delete contract</button>
+                    <button type="button" (click)="deleteContract(contract.id)" class="btn btn-danger">Delete contract</button>
                 </td>
             </tr>
         </tbody>
