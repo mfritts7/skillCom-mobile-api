@@ -20,6 +20,7 @@ export class UserIndexComponent implements OnInit {
   activeUser!: User
   availablePlans!: Plan[]
   availableDevices!: Device[]
+  userContracts!: Contract[]
   
 
  

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { UserService } from '../user/user.service';
-import { Contract } from '../contract/contract';
+
 import { DeviceService } from '../device/device.service';
 import { Device } from '../device/device';
 import { PlanService } from '../plan/plan.service';
@@ -22,6 +21,7 @@ export class CheckoutComponent implements OnInit {
   chosenPlan!: Plan
   chosenDevice!: Device
   contractToPost : ContractDTO ={"userId": 1,"planId":2,"deviceId":2}
+  newContract:Contract = {"id":69,"userId": 1,"planId":2,"deviceId":2}
   
   constructor(private userService: UserService, private planService: PlanService, private deviceService: DeviceService,
     private contractService: ContractService) { }
@@ -31,8 +31,6 @@ export class CheckoutComponent implements OnInit {
     this.chosenPlan = this.deviceService.newPlan;
     this.chosenDevice = this.deviceService.newDevice;
     // this.userService.getUser().subscribe(u => this.newContract.userId = u.id);
-    this.newContract.userId = this.userService.getUserTest().id;
-    console.log(this.newContract.userId);
     this.newContract.planId = this.planService.newPlan.id;
     console.log(this.newContract.planId);
     this.newContract.deviceId = this.deviceService.newDevice.id;

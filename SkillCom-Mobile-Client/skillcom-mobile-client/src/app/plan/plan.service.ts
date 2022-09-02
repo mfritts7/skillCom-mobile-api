@@ -11,6 +11,8 @@ import { ContractDTO } from '../contract/contractDTO';
   providedIn: 'root'
 })
 export class PlanService {
+newPlan!:Plan
+
   private planUrl: string = `${environment.apiUrl}/Plans`;
   private httpOptions = {
     headers: new HttpHeaders({
