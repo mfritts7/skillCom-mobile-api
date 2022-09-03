@@ -13,7 +13,11 @@ import { DeviceService } from 'src/app/device/device.service';
 export class PlanIndexComponent implements OnInit {
   availablePlans!: Plan[];
 
-  constructor(private planService: PlanService, private userService: UserService,private deviceService: DeviceService) { }
+  constructor(
+    private planService: PlanService,
+    private userService: UserService,
+    private deviceService: DeviceService
+  ) { }
 
   ngOnInit() {
     this.retrievePlans();

@@ -56,8 +56,8 @@ count : number = 20
   }
 
   deleteContract(contractId: number) {
-    this.contractService.deleteContract(contractId).subscribe(contract => {
-      this.userContracts = this.userContracts.filter(contract => contract.id !== contractId);
+    this.contractService.deleteContract(contractId).subscribe(() => {
+      this.userContracts = this.userContracts.filter(c => c.id !== contractId);
     })
   }
 

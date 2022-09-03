@@ -15,7 +15,11 @@ export class DeviceIndexComponent implements OnInit {
   availableDevices!: Device[];
   chosenPlan!: Plan;
 
-  constructor(private deviceService: DeviceService, private userService: UserService, private planService: PlanService) { }
+  constructor(
+    private deviceService: DeviceService,
+    private userService: UserService,
+    private planService: PlanService
+  ) { }
 
   ngOnInit(): void {
     this.chosenPlan = this.planService.newPlan;
