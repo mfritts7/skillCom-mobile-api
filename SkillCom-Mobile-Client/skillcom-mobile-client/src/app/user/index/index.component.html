@@ -1,26 +1,36 @@
 <div class="container">
-    <h1>Contracts</h1>
-    <table class="table table-bordered table-striped">
-        <thead>
+
+    <h5> Welcome, {{activeUser.name}}</h5>
+    <script>
+
+    </script>
+
+    <h1>Phones Covered on Basic Plan </h1>
+    <table style="background-color: #e3f2fd;text-align:center;" class="table table-sm">
+        <thead class="table-dark">
             <tr>
-                <th>UserId</th>
-                <th>planId</th>
-                <th>deviceId</th>
+                <th>Plan</th>
+                <th>Device</th>
+                <th>Bill Per Month</th>
                 <th></th>
             </tr>
         </thead>
-        <tbody>
-            <tr *ngFor="let contract of userContracts">
-
-                <td>{{ contract.userId }}</td>
-                <td>{{ contract.planId }}</td>
-                <td>{{ contract.deviceId }}</td>
+        <tbody style="text-align: center">
+            <tr *ngFor="let contract of basicContracts">
+                <td>{{ availablePlans[contract.planId-1].planName }}</td>
+                <td>{{ availableDevices[contract.deviceId-1].type }}</td>
+                <td>${{availableDevices[contract.deviceId-1].price/12 + availablePlans[contract.planId-1].monthlyPrice  |number :'1.0-2'}} </td>
                 <td>
-                    <button type="button" (click)="deleteContract(contract.id)" class="btn btn-danger">Delete contract</button>
+                    <button style="background-color: #b30000;" type="button" (click)="deleteContract(contract.id)" class="btn btn-dark">Delete From Plan</button>
                 </td>
             </tr>
         </tbody>
     </table>
+    <div id ="counter" style="text-align:center"> </div>
+
+    
+    
+
     <a routerLink="/plan" class="btn btn-success">Add plan</a>
     <a routerLink="" class="btn btn-danger">Log out</a>
 </div>
