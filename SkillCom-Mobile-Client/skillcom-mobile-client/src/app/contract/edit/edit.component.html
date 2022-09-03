@@ -1,1 +1,55 @@
-<p>edit works!</p>
+<div class="container">
+    <h1>Plan Information</h1>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Plan Name</th>
+                <th>Monthly Cost</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle"type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ plan.planName }}
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            <button class="dropdown-item" type="button">Basic</button>
+                            <button class="dropdown-item" type="button">Advanced</button>
+                            <button class="dropdown-item" type="button">Premium</button>
+                        </div>
+                    </div>
+                </td>
+                <td>{{ plan.monthlyPrice }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Device Name</th>
+                <th>Cost</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle"type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ device.type }}
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            <button class="dropdown-item" type="button">1</button>
+                            <button class="dropdown-item" type="button">2</button>
+                            <button class="dropdown-item" type="button">3</button>
+                        </div>
+                    </div>
+                </td>
+                <td>{{ device.price }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a routerLink="/user" class="btn btn-primary">Back</a>
+    <button type="button" class="btn btn-success">Save changes</button>
+</div>

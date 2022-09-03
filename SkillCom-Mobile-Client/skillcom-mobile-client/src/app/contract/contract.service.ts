@@ -29,6 +29,11 @@ export class ContractService {
     return this.http.get<Contract[]>(this.contractUrl, this.httpOptions);
   }
 
+  getContract(id: number): Observable<Contract> {
+    let url = `${this.contractUrl}/${id}`;
+    return this.http.get<Contract>(url);
+  }
+
   addContract(newContract: ContractDTO): Observable<Contract> {
     return this.http.post<Contract>(this.contractUrl, newContract);
   }
