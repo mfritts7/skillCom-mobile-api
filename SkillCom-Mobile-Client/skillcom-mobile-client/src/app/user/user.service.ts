@@ -31,14 +31,15 @@ export class UserService {
   addUser(user: User): Observable<User> {
     return this.http.post<User>(this.userUrl, user);
   }
-  NumberPlans(contract : Contract[],planid : number) : number {
-var counter = 0
+  NumberPlans(contract : Contract[], planId: number) : number {
+  var count = 0
     for (let i=0; i<contract.length;i++){
-      if (contract[i].planId == planid){
-        counter = counter +1
+      if (contract[i].planId == planId){
+        count = count + 1
       }
+      console.log(count)
     }
-    return counter
+    return count
   }
 
 
