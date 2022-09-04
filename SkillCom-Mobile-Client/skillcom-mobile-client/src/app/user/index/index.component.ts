@@ -26,22 +26,29 @@ export class UserIndexComponent implements OnInit {
   premiumCount:number = 0;
 
 
-  constructor(private userService: UserService, private contractService: ContractService, private planService: PlanService, private deviceService: DeviceService) { }
+  constructor(
+    private userService: UserService,
+    private contractService: ContractService,
+    private planService: PlanService,
+    private deviceService: DeviceService
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.retrieveUser();
     this.retrieveContracts();
     this.retrievePlans();
     this.retrieveDevices();
+<<<<<<< HEAD
     this.retrieveContracts();
     setTimeout(() =>  this.AddPlanCounts(),3000);
    
 
+=======
+>>>>>>> 873ab837742783e7d77665d2bd05fd3ca3d440ab
   }
 
-
   retrieveUser() {
-    this.userService.getUser().subscribe(u =>  this.activeUser = u);
+      this.userService.getUser().subscribe(u => this.activeUser = u);
   }
 
   retrieveContracts() {
