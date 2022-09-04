@@ -1,11 +1,11 @@
-<div class="container">
+<div class="container" *ngIf="activeUser && userContracts && availablePlans && availableDevices">
     <br>
     <a routerLink="" style="float:right" class="btn btn-danger">Log out</a>
     <h5>Welcome, {{activeUser.name}}</h5>
     <br>
 
     <div *ngIf="userHasPlanType(1)">
-        <h1>Basic Plan</h1>
+        <h1>{{ availablePlans[0].planName }} Plan</h1>
         <table style="background-color: #e3f2fd;text-align:center;" class="table table-sm">
             <thead class="table-dark">
                 <tr>
@@ -30,7 +30,7 @@
     </div>
 
     <div *ngIf="userHasPlanType(2)">
-        <h1>Advanced Plan</h1>
+        <h1>{{ availablePlans[1].planName }} Plan</h1>
         <table style="background-color: #e3f2fd;text-align:center;" class="table table-sm">
             <thead class="table-dark">
                 <tr>
@@ -55,7 +55,7 @@
     </div>
 
     <div *ngIf="userHasPlanType(3)">
-        <h1>Premium Plan</h1>
+        <h1>{{ availablePlans[2].planName }} Plan</h1>
         <table style="background-color: #e3f2fd;text-align:center;" class="table table-sm">
             <thead class="table-dark">
                 <tr>
