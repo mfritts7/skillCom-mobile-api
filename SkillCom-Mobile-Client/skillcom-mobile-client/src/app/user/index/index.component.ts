@@ -20,28 +20,35 @@ export class UserIndexComponent implements OnInit {
   userContracts!: Contract[];
   availablePlans!: Plan[];
   availableDevices!: Device[];
+  basicContracts!: Contract[];
 
-  constructor(
-    private userService: UserService,
-    private contractService: ContractService,
-    private planService: PlanService,
-    private deviceService: DeviceService
-  ) { }
+  constructor(private userService: UserService, private contractService: ContractService, private planService: PlanService, private deviceService: DeviceService) { }
 
   ngOnInit(): void {
     this.retrieveUser();
     this.retrieveContracts();
     this.retrievePlans();
     this.retrieveDevices();
+    this.retrieveContracts();
+    this.basicContracts = this.filterPlans(1)
   }
 
+
   retrieveUser() {
-    this.userService.getUser().subscribe(u => this.activeUser = u);
+    this.userService.getUser().subscribe(u =>  this.activeUser = u
+    )
+      
   }
 
   retrieveContracts() {
-    // this.contractService.getContracts(this.activeUser.id).subscribe(c => this.userContracts = c);
-    this.contractService.getContractsTest().subscribe(c => this.userContracts = c);
+    //this.userService.getContracts(this.activeUser.id).subscribe(c => this.userContracts = c);
+    this.contractService.getContractsTest().subscribe(c => this.userContracts = c,
+      (count) =>  {for(var i=0; i < this.userContracts.length-1; i++){
+        count = count + this.availablePlans[this.userContracts[i].planId].monthlyPrice + this.availableDevices[this.userContracts[i].deviceId].price/12
+    } }
+      );
+      
+    this.contractService.getContractsTest().subscribe();
   }
 
   // should this be moved to the contract/edit page?
@@ -65,5 +72,9 @@ export class UserIndexComponent implements OnInit {
 
   lookupDevice(id: number): Device {
     return this.availableDevices.filter(d => d["id"] == id)[0];
+  }
+
+  filterPlans(id:number) : Contract[] {
+    return this.userContracts.filter((d) => d.planId == 0)
   }
 }

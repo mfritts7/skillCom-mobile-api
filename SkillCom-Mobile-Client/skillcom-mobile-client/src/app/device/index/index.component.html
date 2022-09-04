@@ -1,8 +1,8 @@
 <div class="container">
     <h1>{{ chosenPlan.planName }} Plan - ${{ chosenPlan.monthlyPrice }}</h1>
     <h3>Choose a device</h3>
-    <table class="table table-bordered table-striped">
-        <thead>
+    <table  style="background-color: #e3f2fd;text-align:center;" class="table table-sm">
+        <thead class="table-dark">
             <tr>
                 <th>Phone</th>
                 <th>Price</th>
@@ -12,8 +12,8 @@
         <tbody>
             <tr *ngFor="let device of availableDevices">
                 <td>{{ device.type }}</td>
-                <td>{{ device.price }}</td>
-                <td style="text-align: center"><a routerLink="/checkout" (click)="(addDevice(device))" class="btn btn-success">Add</a></td>
+                <td>${{ device.price }}</td>
+                <td style="text-align: center"><a routerLink="/checkout" (click)="(addDevice(device))" class="btn btn-primary">Add</a></td>
             </tr>
         </tbody>
     </table>
