@@ -1,18 +1,19 @@
-<div class="container">
+<div class="container" *ngIf="activeUser && userContracts && availablePlans && availableDevices">
     <br>
     <a routerLink="" style="float:right" class="btn btn-danger">Log out</a>
     <h5>Welcome, {{activeUser.name}}</h5>
     <br>
+    <h1 style = "text-align: center;float:right">  Monthly Bill- ${{Bill | number:'1.0-2'}}</h1>
 
     <div *ngIf="userHasPlanType(1)">
-        <h1>Basic Plan</h1>
+        <h1>{{ availablePlans[0].planName }} Plan</h1>
         <table style="background-color: #e3f2fd;text-align:center;" class="table table-sm">
             <thead class="table-dark">
                 <tr>
                     <th>Device</th>
                     <th>Phone number</th>
                     <!-- <th>Monthly Bill</th> -->
-                    <th> {{monthBill}}</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody style="text-align: center">
@@ -24,17 +25,19 @@
                         <button type="button" (click)="deleteContract(contract.id)" class="btn btn-danger">Delete from plan</button>
                     </td>
                 </tr>
-                <tr><td>
-                    <div *ngIf="basicCount < 4; else notShowBasic">
-                    <a routerLink="/device" (click)="setPlan(1)" class="btn btn-success">Add device to plan</a>
-                  </div>
-                </td></tr>
+                <tr>
+                    <td>
+                        <div *ngIf="basicCount < 4; else notShow">
+                            <a routerLink="/device" (click)="setPlan(1)" class="btn btn-success">Add device to plan</a>
+                        </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
 
     <div *ngIf="userHasPlanType(2)">
-        <h1>Advanced Plan</h1>
+        <h1>{{ availablePlans[1].planName }} Plan</h1>
         <table style="background-color: #e3f2fd;text-align:center;" class="table table-sm">
             <thead class="table-dark">
                 <tr>
@@ -47,28 +50,25 @@
             <tbody style="text-align: center">
                 <tr *ngFor="let contract of userContracts">
                     <td *ngIf="contract.planId == 2">{{ availableDevices[contract.deviceId-1].type }}</td>
-                    <td *ngIf="contract.planId == 2">default</td>
+                    <td *ngIf="contract.planId == 2">{{ availableDevices[contract.deviceId-1].phoneNumber }}</td>
                     <!-- <td>${{ availableDevices[contract.deviceId-1].price/12 + availablePlans[contract.planId-1].monthlyPrice | number:'1.0-2' }} </td> -->
                     <td *ngIf="contract.planId == 2">
                         <button type="button" (click)="deleteContract(contract.id)" class="btn btn-danger">Delete from plan</button>
                     </td>
                 </tr>
-
-
                 <tr>
-                    <!-- <div *ngIf=""> -->
-                    <td><div *ngIf="advancedCount < 4; else notShowAdvanced">
-                        <a routerLink="/device" (click)="setPlan(2)" class="btn btn-success">Add device to plan</a>
-                      </div></td>
+                    <td>
+                        <div *ngIf="advancedCount < 4; else notShow">
+                            <a routerLink="/device" (click)="setPlan(2)" class="btn btn-success">Add device to plan</a>
+                        </div>
+                    </td>
                 </tr>
-           
-           
             </tbody>
         </table>
     </div>
 
     <div *ngIf="userHasPlanType(3)">
-        <h1>Premium Plan</h1>
+        <h1>{{ availablePlans[2].planName }} Plan</h1>
         <table style="background-color: #e3f2fd;text-align:center;" class="table table-sm">
             <thead class="table-dark">
                 <tr>
@@ -81,15 +81,19 @@
             <tbody style="text-align: center">
                 <tr *ngFor="let contract of userContracts">
                     <td *ngIf="contract.planId == 3">{{ availableDevices[contract.deviceId-1].type }}</td>
-                    <td *ngIf="contract.planId == 3">default</td>
+                    <td *ngIf="contract.planId == 3">{{ availableDevices[contract.deviceId-1].phoneNumber }}</td>
                     <!-- <td>${{ availableDevices[contract.deviceId-1].price/12 + availablePlans[contract.planId-1].monthlyPrice | number:'1.0-2' }} </td> -->
                     <td *ngIf="contract.planId == 3">
                         <button type="button" (click)="deleteContract(contract.id)" class="btn btn-danger">Delete from plan</button>
                     </td>
                 </tr>
-                <tr><td><div *ngIf="premiumCount < 4; else notShowPremium">
-                    <a routerLink="/device" (click)="setPlan(3)" class="btn btn-success">Add device to plan</a>
-                  </div></td></tr>
+                <tr>
+                    <td>
+                        <div *ngIf="premiumCount < 4; else notShow">
+                            <a routerLink="/device" (click)="setPlan(3)" class="btn btn-success">Add device to plan</a>
+                        </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -100,38 +104,10 @@
     <br>
 </div>
 
-<div class="container">
-    <h2>Small Modal</h2>
-    <!-- Trigger the modal with a button -->
-    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Small Modal</button>
-  
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" role="dialog">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Modal Header</h4>
-          </div>
-          <div class="modal-body">
-            <p>This is a small modal.</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <ng-template #notShowBasic>
-    <button  class="btn btn-danger">Basic Plan Limit Reached </button>
-  </ng-template>
-  <ng-template #notShowAdvanced>
-    <button  class="btn btn-danger">Advanced Plan Limit Reached </button>
-  </ng-template>
-  <ng-template #notShowPremium>
-    <button  class="btn btn-danger">Premium Plan Limit Reached </button>
-  </ng-template>
-  
-  
+
+    <br><br><br><br>
+
+
+<ng-template #notShow>
+    <button type="button" class="btn btn-secondary" disabled>Device limit reached</button>
+</ng-template>
