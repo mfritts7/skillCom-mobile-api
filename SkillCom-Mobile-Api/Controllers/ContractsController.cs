@@ -53,24 +53,24 @@ namespace SkillCom_Mobile_Api.Controllers
             return contract;
         }
 
-        //// GET: api/Contracts/User/5
-        //[HttpGet("User/{id}")]
-        //public async Task<ActionResult<Contract>> GetContractsByUser(int id)
-        //{
-        //    if (_context.Contract == null)
-        //    {
-        //        return NotFound();
-        //    }
+        // GET: api/Contracts/User/5
+        [HttpGet("User/{id}")]
+        public async Task<ActionResult<Contract>> GetContractsByUser(int id)
+        {
+            if (_context.Contract == null)
+            {
+                return NotFound();
+            }
 
-        //    var contract = await _context.Contract.Where(c => c.User.Where(u => u.Id == id).Any()).ToListAsync();
+            var contracts = await _context.Contract.Where(c => c.UserId == id).ToListAsync();
 
-        //    if (contract == null)
-        //    {
-        //        return NotFound();
-        //    }
+            if (contracts == null)
+            {
+                return NotFound();
+            }
 
-        //    return contract;
-        //}
+            return Ok(contracts);
+        }
 
         // PUT: api/Contracts/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
