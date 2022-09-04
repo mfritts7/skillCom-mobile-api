@@ -9,6 +9,7 @@ namespace SkillCom_Mobile_Api.Models
         public int UserId { get; set; }
         public int PlanId { get; set; }
         public int DeviceId { get; set; }
+        public string PhoneNumber { get; set; }
 
         //Navigation Properties
         public User User { get; set; } = null!;
