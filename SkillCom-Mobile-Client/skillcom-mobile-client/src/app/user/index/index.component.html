@@ -18,13 +18,17 @@
             <tbody style="text-align: center">
                 <tr *ngFor="let contract of userContracts">
                     <td *ngIf="contract.planId == 1">{{ availableDevices[contract.deviceId-1].type }}</td>
-                    <td *ngIf="contract.planId == 1">{{ availableDevices[contract.deviceId-1].phoneNumber }}</td>
+                    <td *ngIf="contract.planId == 1">{{ availableDevices[contract.deviceId-1].phoneNumber}}</td>
                     <!-- <td>${{ availableDevices[contract.deviceId-1].price/12 + availablePlans[contract.planId-1].monthlyPrice | number:'1.0-2' }} </td> -->
                     <td *ngIf="contract.planId == 1">
                         <button type="button" (click)="deleteContract(contract.id)" class="btn btn-danger">Delete from plan</button>
                     </td>
                 </tr>
-                <tr><td><a routerLink="/device" (click)="setPlan(1)" class="btn btn-success">Add device to plan</a></td></tr>
+                <tr><td>
+                    <div *ngIf="basicCount < 4; else notShowBasic">
+                    <a routerLink="/device" (click)="setPlan(1)" class="btn btn-success">Add device to plan</a>
+                  </div>
+                </td></tr>
             </tbody>
         </table>
     </div>
@@ -49,7 +53,16 @@
                         <button type="button" (click)="deleteContract(contract.id)" class="btn btn-danger">Delete from plan</button>
                     </td>
                 </tr>
-                <tr><td><a routerLink="/device" (click)="setPlan(2)" class="btn btn-success">Add device to plan</a></td></tr>
+
+
+                <tr>
+                    <!-- <div *ngIf=""> -->
+                    <td><div *ngIf="advancedCount < 4; else notShowAdvanced">
+                        <a routerLink="/device" (click)="setPlan(2)" class="btn btn-success">Add device to plan</a>
+                      </div></td>
+                </tr>
+           
+           
             </tbody>
         </table>
     </div>
@@ -74,7 +87,9 @@
                         <button type="button" (click)="deleteContract(contract.id)" class="btn btn-danger">Delete from plan</button>
                     </td>
                 </tr>
-                <tr><td><a routerLink="/device" (click)="setPlan(3)" class="btn btn-success">Add device to plan</a></td></tr>
+                <tr><td><div *ngIf="premiumCount < 4; else notShowPremium">
+                    <a routerLink="/device" (click)="setPlan(3)" class="btn btn-success">Add device to plan</a>
+                  </div></td></tr>
             </tbody>
         </table>
     </div>
@@ -108,4 +123,15 @@
         </div>
     </div>
 </div>
+  
+  <ng-template #notShowBasic>
+    <button  class="btn btn-danger">Basic Plan Limit Reached </button>
+  </ng-template>
+  <ng-template #notShowAdvanced>
+    <button  class="btn btn-danger">Advanced Plan Limit Reached </button>
+  </ng-template>
+  <ng-template #notShowPremium>
+    <button  class="btn btn-danger">Premium Plan Limit Reached </button>
+  </ng-template>
+  
   

@@ -21,7 +21,7 @@ export class UserIndexComponent implements OnInit {
   userContracts!: Contract[];
   availablePlans!: Plan[];
   availableDevices!: Device[];
-  basicCount: number = 0;
+  basicCount: number = 69;
   advancedCount: number = 0;
   premiumCount:number = 0;
 
@@ -38,7 +38,13 @@ export class UserIndexComponent implements OnInit {
     this.retrieveContracts();
     this.retrievePlans();
     this.retrieveDevices();
-    this.addPlanCounts()
+    setTimeout((basicCount: number) =>  {this.basicCount  = this.AddPlanCounts(1)},1000);
+    setTimeout((advancedCount: number) =>  this.advancedCount  = this.AddPlanCounts(2),1000);
+    setTimeout((premiumCount: number) =>  this.premiumCount  = this.AddPlanCounts(3),1000);
+   
+   
+
+
   }
 
   retrieveUser() {
@@ -57,10 +63,9 @@ export class UserIndexComponent implements OnInit {
     this.contractService.getContractsTest().subscribe(c => this.userContracts = c);
 
   }
-  addPlanCounts() {
-    this.userService.numberPlans(this.userContracts, 1)
-    this.userService.numberPlans(this.userContracts, 2)
-    this.userService.numberPlans(this.userContracts, 3)
+  AddPlanCounts(planId : number) : number{
+   return this.userService.NumberPlans(this.userContracts,planId)
+
   }
 
   // should this be moved to contract/edit.component.ts?
