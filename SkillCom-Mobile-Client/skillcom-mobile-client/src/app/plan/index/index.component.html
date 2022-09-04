@@ -12,6 +12,7 @@
           <li>Terrible Service</li>
           <li>100GB Talk/Text</li>
           <li>Limited Coverage</li>
+          <li> 2 Devices Allowed</li>
         </ul>
         <div *ngIf="!hasPlanType(1); else notShow">
           <button type="button" routerLink="/device" (click)="(addPlan(availablePlans[0]))" class="w-100 btn btn-lg btn-primary">Select</button>
@@ -31,6 +32,7 @@
           <li>Decent Service</li>
           <li>500GB Talk/Text</li>
           <li>Unlimited Coverage</li>
+          <li> 5 Devices Allowed</li>
         </ul>
         <div *ngIf="!hasPlanType(2); else notShow">
           <button type="button" routerLink="/device" (click)="(addPlan(availablePlans[1]))" class="w-100 btn btn-lg btn-primary">Select</button>
@@ -49,6 +51,7 @@
           <li>Best Service</li>
           <li>Unlimited Talk/Text</li>
           <li>Unlimited Coverage</li>
+          <li> 5 Devices Allowed</li> 
         </ul>
         <div *ngIf="!hasPlanType(3); else notShow">
           <button type="button" routerLink="/device" (click)="(addPlan(availablePlans[2]))" class="w-100 btn btn-lg btn-primary">Select</button>

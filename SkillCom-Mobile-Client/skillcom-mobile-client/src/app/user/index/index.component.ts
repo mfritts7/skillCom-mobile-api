@@ -10,6 +10,7 @@ import { DeviceService } from 'src/app/device/device.service';
 import { Device } from 'src/app/device/device';
 
 
+
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
@@ -20,6 +21,10 @@ export class UserIndexComponent implements OnInit {
   userContracts!: Contract[];
   availablePlans!: Plan[];
   availableDevices!: Device[];
+  basicCount: number = 0;
+  advancedCount: number = 0;
+  premiumCount:number = 0;
+
 
   constructor(private userService: UserService, private contractService: ContractService, private planService: PlanService, private deviceService: DeviceService) { }
 
@@ -29,6 +34,9 @@ export class UserIndexComponent implements OnInit {
     this.retrievePlans();
     this.retrieveDevices();
     this.retrieveContracts();
+    setTimeout(() =>  this.AddPlanCounts(),3000);
+   
+
   }
 
 
@@ -46,6 +54,12 @@ export class UserIndexComponent implements OnInit {
     // );
 
     this.contractService.getContractsTest().subscribe(c => this.userContracts = c);
+
+  }
+  AddPlanCounts(){
+    this.userService.NumberPlans(this.userContracts,1)
+    this.userService.NumberPlans(this.userContracts,2)
+    this.userService.NumberPlans(this.userContracts,3)
   }
 
   // should this be moved to contract/edit.component.ts?
