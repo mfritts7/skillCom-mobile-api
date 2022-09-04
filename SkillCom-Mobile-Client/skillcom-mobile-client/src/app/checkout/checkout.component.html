@@ -9,7 +9,7 @@
         <li style="font-size: 200%">{{ chosenDevice.type }}</li>
         <li style="font-size: 200%">${{ chosenPlan.monthlyPrice + chosenDevice.price/12 | number:'1.0-2'}}<small class="text-muted fw-light">/mo</small></li>
       </ul>
-      <button routerLink="/device" (click)="(addContract(newContract))" class="w-100 btn btn-lg btn-success">Check out</button>
+      <button routerLink="/user" (click)="(addContract(newContract))" class="w-100 btn btn-lg btn-success">Check out</button>
     </div>
   </div>
 </div>
