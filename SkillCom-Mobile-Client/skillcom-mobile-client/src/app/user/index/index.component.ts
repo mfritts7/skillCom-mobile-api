@@ -31,24 +31,21 @@ export class UserIndexComponent implements OnInit {
     private contractService: ContractService,
     private planService: PlanService,
     private deviceService: DeviceService
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.retrieveUser();
     this.retrieveContracts();
     this.retrievePlans();
     this.retrieveDevices();
-    setTimeout((basicCount: number) =>  {this.basicCount  = this.AddPlanCounts(1)},1000);
-    setTimeout((advancedCount: number) =>  this.advancedCount  = this.AddPlanCounts(2),1000);
-    setTimeout((premiumCount: number) =>  this.premiumCount  = this.AddPlanCounts(3),1000);
-   
-   
-
-
+    setTimeout(() =>  this.basicCount = this.addPlanCounts(1), 1000);
+    setTimeout(() =>  this.advancedCount = this.addPlanCounts(2), 1000);
+    setTimeout(() =>  this.premiumCount = this.addPlanCounts(3), 1000);
   }
 
   retrieveUser() {
-      this.userService.getUser().subscribe(u => this.activeUser = u);
+    this.userService.getUser().subscribe(u => this.activeUser = u);
   }
 
   retrieveContracts() {
@@ -61,11 +58,10 @@ export class UserIndexComponent implements OnInit {
     // );
 
     this.contractService.getContractsTest().subscribe(c => this.userContracts = c);
-
   }
-  AddPlanCounts(planId : number) : number{
-   return this.userService.NumberPlans(this.userContracts,planId)
 
+  addPlanCounts(planId : number) : number{
+    return this.userService.numberOfPlans(this.userContracts, planId)
   }
 
   // should this be moved to contract/edit.component.ts?
