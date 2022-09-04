@@ -1,36 +1,86 @@
 <div class="container">
+    <br>
+    <a routerLink="" style="float:right" class="btn btn-danger">Log out</a>
+    <h5>Welcome, {{activeUser.name}}</h5>
+    <br>
 
-    <h5> Welcome, {{activeUser.name}}</h5>
-    <script>
+    <div *ngIf="userHasPlanType(1)">
+        <h1>Basic Plan</h1>
+        <table style="background-color: #e3f2fd;text-align:center;" class="table table-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>Device</th>
+                    <th>Phone number</th>
+                    <!-- <th>Monthly Bill</th> -->
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody style="text-align: center">
+                <tr *ngFor="let contract of userContracts">
+                    <td *ngIf="contract.planId == 1">{{ availableDevices[contract.deviceId-1].type }}</td>
+                    <td *ngIf="contract.planId == 1">default</td>
+                    <!-- <td>${{ availableDevices[contract.deviceId-1].price/12 + availablePlans[contract.planId-1].monthlyPrice | number:'1.0-2' }} </td> -->
+                    <td *ngIf="contract.planId == 1">
+                        <button type="button" (click)="deleteContract(contract.id)" class="btn btn-danger">Delete from plan</button>
+                    </td>
+                </tr>
+                <tr><td><a routerLink="/device" (click)="setPlan(1)" class="btn btn-success">Add device to plan</a></td></tr>
+            </tbody>
+        </table>
+    </div>
 
-    </script>
+    <div *ngIf="userHasPlanType(2)">
+        <h1>Advanced Plan</h1>
+        <table style="background-color: #e3f2fd;text-align:center;" class="table table-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>Device</th>
+                    <th>Phone number</th>
+                    <!-- <th>Monthly Bill</th> -->
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody style="text-align: center">
+                <tr *ngFor="let contract of userContracts">
+                    <td *ngIf="contract.planId == 2">{{ availableDevices[contract.deviceId-1].type }}</td>
+                    <td *ngIf="contract.planId == 2">default</td>
+                    <!-- <td>${{ availableDevices[contract.deviceId-1].price/12 + availablePlans[contract.planId-1].monthlyPrice | number:'1.0-2' }} </td> -->
+                    <td *ngIf="contract.planId == 2">
+                        <button type="button" (click)="deleteContract(contract.id)" class="btn btn-danger">Delete from plan</button>
+                    </td>
+                </tr>
+                <tr><td><a routerLink="/device" (click)="setPlan(2)" class="btn btn-success">Add device to plan</a></td></tr>
+            </tbody>
+        </table>
+    </div>
 
-    <h1>Phones Covered on Basic Plan </h1>
-    <table style="background-color: #e3f2fd;text-align:center;" class="table table-sm">
-        <thead class="table-dark">
-            <tr>
-                <th>Plan</th>
-                <th>Device</th>
-                <th>Bill Per Month</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody style="text-align: center">
-            <tr *ngFor="let contract of basicContracts">
-                <td>{{ availablePlans[contract.planId-1].planName }}</td>
-                <td>{{ availableDevices[contract.deviceId-1].type }}</td>
-                <td>${{availableDevices[contract.deviceId-1].price/12 + availablePlans[contract.planId-1].monthlyPrice  |number :'1.0-2'}} </td>
-                <td>
-                    <button style="background-color: #b30000;" type="button" (click)="deleteContract(contract.id)" class="btn btn-dark">Delete From Plan</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <div id ="counter" style="text-align:center"> </div>
+    <div *ngIf="userHasPlanType(3)">
+        <h1>Premium Plan</h1>
+        <table style="background-color: #e3f2fd;text-align:center;" class="table table-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>Device</th>
+                    <th>Phone number</th>
+                    <!-- <th>Monthly Bill</th> -->
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody style="text-align: center">
+                <tr *ngFor="let contract of userContracts">
+                    <td *ngIf="contract.planId == 3">{{ availableDevices[contract.deviceId-1].type }}</td>
+                    <td *ngIf="contract.planId == 3">default</td>
+                    <!-- <td>${{ availableDevices[contract.deviceId-1].price/12 + availablePlans[contract.planId-1].monthlyPrice | number:'1.0-2' }} </td> -->
+                    <td *ngIf="contract.planId == 3">
+                        <button type="button" (click)="deleteContract(contract.id)" class="btn btn-danger">Delete from plan</button>
+                    </td>
+                </tr>
+                <tr><td><a routerLink="/device" (click)="setPlan(3)" class="btn btn-success">Add device to plan</a></td></tr>
+            </tbody>
+        </table>
+    </div>
 
-    
-    
-
-    <a routerLink="/plan" class="btn btn-success">Add plan</a>
-    <a routerLink="" class="btn btn-danger">Log out</a>
+    <br>
+    <a *ngIf="!userHasPlanType(1) || !userHasPlanType(2) || !userHasPlanType(3)" routerLink="/plan" class="btn btn-success">Add plan</a>
+    <br>
+    <br>
 </div>

@@ -20,7 +20,6 @@ export class UserIndexComponent implements OnInit {
   userContracts!: Contract[];
   availablePlans!: Plan[];
   availableDevices!: Device[];
-  basicContracts!: Contract[];
 
   constructor(private userService: UserService, private contractService: ContractService, private planService: PlanService, private deviceService: DeviceService) { }
 
@@ -30,28 +29,26 @@ export class UserIndexComponent implements OnInit {
     this.retrievePlans();
     this.retrieveDevices();
     this.retrieveContracts();
-    this.basicContracts = this.filterPlans(1)
   }
 
 
   retrieveUser() {
-    this.userService.getUser().subscribe(u =>  this.activeUser = u
-    )
-      
+    this.userService.getUser().subscribe(u =>  this.activeUser = u);
   }
 
   retrieveContracts() {
     //this.userService.getContracts(this.activeUser.id).subscribe(c => this.userContracts = c);
-    this.contractService.getContractsTest().subscribe(c => this.userContracts = c,
-      (count) =>  {for(var i=0; i < this.userContracts.length-1; i++){
-        count = count + this.availablePlans[this.userContracts[i].planId].monthlyPrice + this.availableDevices[this.userContracts[i].deviceId].price/12
-    } }
-      );
-      
-    this.contractService.getContractsTest().subscribe();
+
+    // this.contractService.getContractsTest().subscribe(c => this.userContracts = c,
+    //   (count) => {for(var i=0; i < this.userContracts.length-1; i++){
+    //     count = count + this.availablePlans[this.userContracts[i].planId].monthlyPrice + this.availableDevices[this.userContracts[i].deviceId].price/12
+    //   }}
+    // );
+
+    this.contractService.getContractsTest().subscribe(c => this.userContracts = c);
   }
 
-  // should this be moved to the contract/edit page?
+  // should this be moved to contract/edit.component.ts?
   deleteContract(contractId: number) {
     this.contractService.deleteContract(contractId).subscribe(() => {
       this.userContracts = this.userContracts.filter(c => c.id !== contractId);
@@ -74,7 +71,11 @@ export class UserIndexComponent implements OnInit {
     return this.availableDevices.filter(d => d["id"] == id)[0];
   }
 
-  filterPlans(id:number) : Contract[] {
-    return this.userContracts.filter((d) => d.planId == 0)
+  userHasPlanType(pId: number): boolean {
+    return this.planService.hasPlanType(pId, this.userContracts);
+  }
+
+  setPlan(pId: number) {
+    this.planService.newPlan = JSON.parse(JSON.stringify(this.availablePlans[pId-1]));
   }
 }

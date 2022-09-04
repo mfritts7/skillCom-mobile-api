@@ -1,19 +1,15 @@
-
-<div class="col">
-    <div class="card mb-4 rounded-3 shadow-sm" style ="background-color: #e3f2fd;">
-      <div class="card-header py-3">
-        <h4 class="my-0 fw-normal" style = "text-align:center;font-size:500%">ChosenPlan - {{chosenPlan.planName}}</h4>
-      </div>
-      <div class="card-body" >
-        <ul style = "text-align:center" class="list-unstyled mt-3 mb-4">
-          <li style = "font-size: 300%">Device Chosen - {{ chosenDevice.type }}</li>
-          <li style = "font-size: 300%">$<small>/mo </small> - ${{ chosenPlan.monthlyPrice + chosenDevice.price/12 |number :'1.0-2'}}</li>
-          
-        </ul>
-        <button routerLink="/device" class="btn btn-primary">Back</button>
-        <button routerLink="/user" (click)="(addContract(newContract))" class="btn btn-success">Check out</button>
-      </div>
+<button onclick="history.back()" style="margin-top: 0.2in; margin-left: 1.1in" class="btn btn-primary">Back</button>
+<div style="margin-top: 0.2in; margin-left: 1in; margin-right: 1in" class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+  <div class="card mb-4 rounded-3 shadow-sm" style ="background-color: #e3f2fd;">
+    <div class="card-header py-3">
+      <h1 class="my-0 fw-normal" style="text-align:center">{{ chosenPlan.planName }} Plan</h1>
+    </div>
+    <div class="card-body">
+      <ul style="text-align:center" class="list-unstyled mt-3 mb-4">
+        <li style="font-size: 200%">{{ chosenDevice.type }}</li>
+        <li style="font-size: 200%">${{ chosenPlan.monthlyPrice + chosenDevice.price/12 | number:'1.0-2'}}<small class="text-muted fw-light">/mo</small></li>
+      </ul>
+      <button routerLink="/device" (click)="(addContract(newContract))" class="w-100 btn btn-lg btn-success">Check out</button>
     </div>
   </div>
-
-
+</div>

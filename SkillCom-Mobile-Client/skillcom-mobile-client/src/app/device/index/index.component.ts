@@ -22,8 +22,8 @@ export class DeviceIndexComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.chosenPlan = this.planService.newPlan;
     this.retrieveDevices();
+    this.chosenPlan = this.planService.newPlan;
   }
 
   retrieveDevices() : void{

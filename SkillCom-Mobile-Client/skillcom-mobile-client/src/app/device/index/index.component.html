@@ -1,5 +1,6 @@
+<a style="float:right; margin-top: 0.2in; margin-right: 1.1in" routerLink="" class="btn btn-danger">Log out</a>
 <div class="container">
-    <h1>{{ chosenPlan.planName }} Plan - ${{ chosenPlan.monthlyPrice }}</h1>
+    <h1 *ngIf="chosenPlan">{{ chosenPlan.planName }} Plan - ${{ chosenPlan.monthlyPrice }}</h1>
     <h3>Choose a device</h3>
     <table  style="background-color: #e3f2fd;text-align:center;" class="table table-sm">
         <thead class="table-dark">
@@ -13,10 +14,9 @@
             <tr *ngFor="let device of availableDevices">
                 <td>{{ device.type }}</td>
                 <td>${{ device.price }}</td>
-                <td style="text-align: center"><a routerLink="/checkout" (click)="(addDevice(device))" class="btn btn-primary">Add</a></td>
+                <td style="text-align: center"><a routerLink="/checkout" (click)="(addDevice(device))" class="btn btn-success">Add</a></td>
             </tr>
         </tbody>
     </table>
-    <a routerLink="/plan" class="btn btn-primary">Back</a>
-    <a routerLink="" class="btn btn-danger">Log out</a>
+    <a onclick="history.back()" class="btn btn-primary">Back</a>
 </div>
