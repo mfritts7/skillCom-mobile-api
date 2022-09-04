@@ -24,6 +24,7 @@ export class UserIndexComponent implements OnInit {
   basicCount: number = 69;
   advancedCount: number = 0;
   premiumCount:number = 0;
+  monthBill : number = 0;
 
 
   constructor(
@@ -41,6 +42,9 @@ export class UserIndexComponent implements OnInit {
     setTimeout((basicCount: number) =>  {this.basicCount  = this.AddPlanCounts(1)},1000);
     setTimeout((advancedCount: number) =>  this.advancedCount  = this.AddPlanCounts(2),1000);
     setTimeout((premiumCount: number) =>  this.premiumCount  = this.AddPlanCounts(3),1000);
+    setTimeout(()=>{for(var i=0; i < this.userContracts.length-1; i++){
+      this.monthBill = this.monthBill + this.availablePlans[this.userContracts[i].planId].monthlyPrice + this.availableDevices[this.userContracts[i].deviceId].price/12
+    }} ,1000);
    
    
 
@@ -54,11 +58,11 @@ export class UserIndexComponent implements OnInit {
   retrieveContracts() {
     //this.userService.getContracts(this.activeUser.id).subscribe(c => this.userContracts = c);
 
-    // this.contractService.getContractsTest().subscribe(c => this.userContracts = c,
-    //   (count) => {for(var i=0; i < this.userContracts.length-1; i++){
-    //     count = count + this.availablePlans[this.userContracts[i].planId].monthlyPrice + this.availableDevices[this.userContracts[i].deviceId].price/12
-    //   }}
-    // );
+    this.contractService.getContractsTest().subscribe(c => this.userContracts = c,
+      (count) => {for(var i=0; i < this.userContracts.length-1; i++){
+        count = count + this.availablePlans[this.userContracts[i].planId].monthlyPrice + this.availableDevices[this.userContracts[i].deviceId].price/12
+      }}
+    );
 
     this.contractService.getContractsTest().subscribe(c => this.userContracts = c);
 
@@ -98,4 +102,6 @@ export class UserIndexComponent implements OnInit {
   setPlan(pId: number) {
     this.planService.newPlan = JSON.parse(JSON.stringify(this.availablePlans[pId-1]));
   }
+
+
 }
