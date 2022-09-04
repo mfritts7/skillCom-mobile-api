@@ -18,9 +18,10 @@
             <tbody style="text-align: center">
                 <tr *ngFor="let contract of userContracts">
                     <td *ngIf="contract.planId == 1">{{ availableDevices[contract.deviceId-1].type }}</td>
-                    <td *ngIf="contract.planId == 1">default</td>
+                    <td *ngIf="contract.planId == 1">{{ availableDevices[contract.deviceId-1].phoneNumber }}</td>
                     <!-- <td>${{ availableDevices[contract.deviceId-1].price/12 + availablePlans[contract.planId-1].monthlyPrice | number:'1.0-2' }} </td> -->
                     <td *ngIf="contract.planId == 1">
+                        <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#changeNumber">Change phone number</button>
                         <button type="button" (click)="deleteContract(contract.id)" class="btn btn-danger">Delete from plan</button>
                     </td>
                 </tr>
@@ -43,7 +44,7 @@
             <tbody style="text-align: center">
                 <tr *ngFor="let contract of userContracts">
                     <td *ngIf="contract.planId == 2">{{ availableDevices[contract.deviceId-1].type }}</td>
-                    <td *ngIf="contract.planId == 2">default</td>
+                    <td *ngIf="contract.planId == 2">{{ availableDevices[contract.deviceId-1].phoneNumber }}</td>
                     <!-- <td>${{ availableDevices[contract.deviceId-1].price/12 + availablePlans[contract.planId-1].monthlyPrice | number:'1.0-2' }} </td> -->
                     <td *ngIf="contract.planId == 2">
                         <button type="button" (click)="deleteContract(contract.id)" class="btn btn-danger">Delete from plan</button>
@@ -68,7 +69,7 @@
             <tbody style="text-align: center">
                 <tr *ngFor="let contract of userContracts">
                     <td *ngIf="contract.planId == 3">{{ availableDevices[contract.deviceId-1].type }}</td>
-                    <td *ngIf="contract.planId == 3">default</td>
+                    <td *ngIf="contract.planId == 3">{{ availableDevices[contract.deviceId-1].phoneNumber }}</td>
                     <!-- <td>${{ availableDevices[contract.deviceId-1].price/12 + availablePlans[contract.planId-1].monthlyPrice | number:'1.0-2' }} </td> -->
                     <td *ngIf="contract.planId == 3">
                         <button type="button" (click)="deleteContract(contract.id)" class="btn btn-danger">Delete from plan</button>
@@ -77,6 +78,21 @@
                 <tr><td><a routerLink="/device" (click)="setPlan(3)" class="btn btn-success">Add device to plan</a></td></tr>
             </tbody>
         </table>
+    </div>
+    <div class="modal fade" id="changeNumber" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">...</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <br>

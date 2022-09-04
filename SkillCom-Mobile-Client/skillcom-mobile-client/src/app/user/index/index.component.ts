@@ -78,4 +78,8 @@ export class UserIndexComponent implements OnInit {
   setPlan(pId: number) {
     this.planService.newPlan = JSON.parse(JSON.stringify(this.availablePlans[pId-1]));
   }
+
+  changePhoneNumber() {
+    //
+  }
 }
