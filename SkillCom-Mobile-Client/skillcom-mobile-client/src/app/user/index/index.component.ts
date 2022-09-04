@@ -16,10 +16,10 @@ import { Device } from 'src/app/device/device';
   styleUrls: ['./index.component.css']
 })
 export class UserIndexComponent implements OnInit {
-  activeUser!: User
-  availablePlans!: Plan[]
-  availableDevices!: Device[]
-  userContracts!: Contract[]
+  activeUser!: User;
+  userContracts!: Contract[];
+  availablePlans!: Plan[];
+  availableDevices!: Device[];
 
   constructor(
     private userService: UserService,
@@ -30,9 +30,9 @@ export class UserIndexComponent implements OnInit {
 
   ngOnInit(): void {
     this.retrieveUser();
+    this.retrieveContracts();
     this.retrievePlans();
     this.retrieveDevices();
-    this.retrieveContracts();
   }
 
   retrieveUser() {
@@ -44,6 +44,7 @@ export class UserIndexComponent implements OnInit {
     this.contractService.getContractsTest().subscribe(c => this.userContracts = c);
   }
 
+  // should this be moved to the contract/edit page?
   deleteContract(contractId: number) {
     this.contractService.deleteContract(contractId).subscribe(() => {
       this.userContracts = this.userContracts.filter(c => c.id !== contractId);
