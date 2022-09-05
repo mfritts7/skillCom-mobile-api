@@ -17,11 +17,6 @@ export class PlanService {
       'Content-Type':'application/json'
     })
   };
-  // tempPlanData: Plan[] = [
-  //   {"id":1,"planName":"Basic","monthlyPrice":10},
-  //   {"id":2,"planName":"Advanced","monthlyPrice":40},
-  //   {"id":3,"planName":"Premium","monthlyPrice":80}
-  // ];
 
   constructor(private http: HttpClient) { }
 

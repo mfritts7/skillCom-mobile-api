@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { PlanIndexComponent } from './index/index.component';
 
-
 const routes: Routes = [
   { path: 'plan', component: PlanIndexComponent },
 ];

@@ -8,7 +8,7 @@ import { Plan } from '../plan'
 import { DeviceService } from 'src/app/device/device.service';
 
 @Component({
-  selector: 'app-index',
+  selector: 'app-plan-index',
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.css']
 })

@@ -15,11 +15,6 @@ export class UserService {
       'Content-Type':'application/json'
     })
   };
-  // tempUserData: User[] = [
-  //   {"id":1,"name":"John Cena","email":"WrestleMania@gmail.com"},
-  //   {"id":2,"name":"Walter White","email":"WeNeedToCookJesse@yahoo.com"},
-  //   {"id":3,"name":"Barack Obama","email":"potus@gmail.com"}
-  // ]
 
   constructor(private http: HttpClient) { }
 

@@ -1,40 +1,24 @@
 <div class="container" *ngIf="chosenPlan && availableDevices">
-    <a style="float:right; margin-top: 0.2in; margin-right: 1.1in" routerLink="" class="btn btn-danger">Log out</a>
-    <div class="container">
-        <h1 *ngIf="chosenPlan">{{ chosenPlan.planName }} Plan - ${{ chosenPlan.monthlyPrice }}</h1>
-        <h3>Choose a device</h3>
-        <table  style="background-color: #e3f2fd;text-align:center;" class="table table-sm">
-            <thead class="table-dark">
-                <tr>
-                    <th>Phone</th>
-                    <th>Price</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let device of availableDevices">
-                    <td>{{ device.type }}</td>
-                    <td>${{ device.price }}</td>
-                    <td style="text-align: center"><a routerLink="/checkout" (click)="(addDevice(device))" class="btn btn-success">Add</a></td>
-                </tr>
-            </tbody>
-        </table>
-
-        <!-- <div class="container">
-            <h1>Add Phone Number</h1>
-            <form [formGroup]="newPhoneForm" (ngSubmit)="submit()">
-                <div class="form-group">
-                    <label for="phoneNumber">Phone Number</label>
-                    <input type="text" class="form-control" id="name" formControlName="name" />
-                    <div *ngIf="f['phoneNumber'].touched && f['phoneNumber'].invalid" class="alert alert-danger">
-                        <div *ngIf="f['phoneNumber'].errors f['phoneNumber'].errors['required']">Name is required.</div>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary" [disabled]="!newPhoneForm.valid">Submit</button>
-        
-            </form>
-        </div> -->
-
-        <a onclick="history.back()" class="btn btn-primary">Back</a>
-    </div>
+  <a style="float:right; margin-top: 0.2in; margin-right: 1.1in" routerLink="" class="btn btn-danger">Log out</a>
+  <div class="container">
+    <h1 *ngIf="chosenPlan">{{ chosenPlan.planName }} Plan - ${{ chosenPlan.monthlyPrice }}</h1>
+    <h3>Choose a device</h3>
+    <table  style="background-color: #e3f2fd;text-align:center;" class="table table-sm">
+      <thead class="table-dark">
+        <tr>
+          <th>Phone</th>
+          <th>Price</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let device of availableDevices">
+          <td>{{ device.type }}</td>
+          <td>${{ device.price }}</td>
+          <td style="text-align: center"><a routerLink="/checkout" (click)="(addDevice(device))" class="btn btn-success">Add</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <a onclick="history.back()" class="btn btn-primary">Back</a>
+  </div>
 </div>

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, from, of, throwError, catchError } from 'rxjs';
-import { Plan } from '../plan/plan';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Device } from './device';
 

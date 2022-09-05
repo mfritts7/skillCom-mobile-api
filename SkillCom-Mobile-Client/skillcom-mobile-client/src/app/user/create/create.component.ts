@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 
 @Component({
-  selector: 'app-create',
+  selector: 'app-user-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css']
 })
@@ -25,15 +25,6 @@ export class UserCreateComponent implements OnInit {
   }
 
   get f() { return this.newUserForm.controls; }
-
-  // submit() {
-  //   this.userService.add(this.newUserForm.value).subscribe(() => {
-  //     console.log(this.newUserForm.value);
-  //     console.log(this.newUserForm.valid);
-  //     console.log("Account created successfully!");
-  //     this.router.navigateByUrl('/user');
-  //   });
-  // }
   
   submit() {
     this.userService.addUser(this.newUserForm.value)

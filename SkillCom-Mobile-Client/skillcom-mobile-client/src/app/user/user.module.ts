@@ -7,7 +7,6 @@ import { UserRoutingModule } from './user-routing.module';
 import { UserCreateComponent } from './create/create.component';
 import { UserIndexComponent } from './index/index.component';
 
-
 @NgModule({
   declarations: [
     UserCreateComponent,
