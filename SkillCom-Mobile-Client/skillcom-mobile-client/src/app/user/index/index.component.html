@@ -19,7 +19,7 @@
             <tbody style="text-align: center">
                 <tr *ngFor="let contract of userContracts">
                     <td *ngIf="contract.planId == 1">{{ availableDevices[contract.deviceId-1].type }}</td>
-                    <td *ngIf="contract.planId == 1">{{ availableDevices[contract.deviceId-1].phoneNumber}}</td>
+                    <td *ngIf="contract.planId == 1">{{ contract.phoneNumber}}</td>
                     <!-- <td>${{ availableDevices[contract.deviceId-1].price/12 + availablePlans[contract.planId-1].monthlyPrice | number:'1.0-2' }} </td> -->
                     <td *ngIf="contract.planId == 1">
                         <button type="button" (click)="deleteContract(contract.id)" class="btn btn-danger">Delete from plan</button>
@@ -50,7 +50,7 @@
             <tbody style="text-align: center">
                 <tr *ngFor="let contract of userContracts">
                     <td *ngIf="contract.planId == 2">{{ availableDevices[contract.deviceId-1].type }}</td>
-                    <td *ngIf="contract.planId == 2">{{ availableDevices[contract.deviceId-1].phoneNumber }}</td>
+                    <td *ngIf="contract.planId == 2">{{ contract.phoneNumber }}</td>
                     <!-- <td>${{ availableDevices[contract.deviceId-1].price/12 + availablePlans[contract.planId-1].monthlyPrice | number:'1.0-2' }} </td> -->
                     <td *ngIf="contract.planId == 2">
                         <button type="button" (click)="deleteContract(contract.id)" class="btn btn-danger">Delete from plan</button>
@@ -81,7 +81,7 @@
             <tbody style="text-align: center">
                 <tr *ngFor="let contract of userContracts">
                     <td *ngIf="contract.planId == 3">{{ availableDevices[contract.deviceId-1].type }}</td>
-                    <td *ngIf="contract.planId == 3">{{ availableDevices[contract.deviceId-1].phoneNumber }}</td>
+                    <td *ngIf="contract.planId == 3">{{ contract.phoneNumber }}</td>
                     <!-- <td>${{ availableDevices[contract.deviceId-1].price/12 + availablePlans[contract.planId-1].monthlyPrice | number:'1.0-2' }} </td> -->
                     <td *ngIf="contract.planId == 3">
                         <button type="button" (click)="deleteContract(contract.id)" class="btn btn-danger">Delete from plan</button>
