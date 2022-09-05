@@ -9,7 +9,6 @@ import { Device } from '../device/device';
 import { PlanService } from '../plan/plan.service';
 import { Plan } from '../plan/plan';
 
-
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -27,14 +26,12 @@ export class CheckoutComponent implements OnInit {
     private deviceService: DeviceService
   ) { }
   
-
   ngOnInit(): void {
     this.chosenPlan = this.planService.newPlan;
     this.chosenDevice = this.deviceService.newDevice;
     this.userService.getUser().subscribe(u => this.newContract.userId = u.id)
     this.newContract.planId = this.planService.newPlan.id;
     this.newContract.deviceId = this.deviceService.newDevice.id;
-
   }
 
   addContract(newContract: ContractDTO): void {

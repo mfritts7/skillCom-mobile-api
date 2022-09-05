@@ -5,8 +5,8 @@ import { PlanService } from 'src/app/plan/plan.service';
 import { Plan } from 'src/app/plan/plan';
 import { DeviceService } from '../device.service';
 import { Device } from '../device';
-import {FormGroup,FormControl,Validators} from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
@@ -40,11 +40,16 @@ export class DeviceIndexComponent implements OnInit {
   addDevice(device: Device) {
     this.deviceService.newDevice = JSON.parse(JSON.stringify(device))
   }
-  get f(){return this.newPhoneForm.controls}
-  submit(){
+
+  get f() {
+    return this.newPhoneForm.controls
+  }
+  
+  submit() {
+
   }
 
-  addPhoneNumber(){
+  addPhoneNumber() {
     
   }
 }
