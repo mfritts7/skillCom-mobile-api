@@ -32,8 +32,7 @@ export class UserIndexComponent implements OnInit {
     private contractService: ContractService,
     private planService: PlanService,
     private deviceService: DeviceService
-  ) {
-  }
+  ) { }
 
   ngOnInit() {
     this.retrieveUser();
@@ -52,15 +51,15 @@ export class UserIndexComponent implements OnInit {
   }
 
   retrieveUser() {
-    this.userService.getUser().subscribe(u => this.activeUser = u);
+    return this.userService.getUser().subscribe(u => this.activeUser = u);
   }
 
   retrieveContracts() {
-    //this.userService.getContracts(this.activeUser.id).subscribe(c => this.userContracts = c);
+    this.contractService.getContracts(this.activeUser.id).subscribe(c => this.userContracts = c);
 
     this.contractService.getContractsTest().subscribe(c => this.userContracts = c);
 
-    this.contractService.getContractsTest().subscribe(c => this.userContracts = c);
+    // this.contractService.getContractsTest().subscribe(c => this.userContracts = c);
   }
 
   addPlanCounts(planId : number) : number{
