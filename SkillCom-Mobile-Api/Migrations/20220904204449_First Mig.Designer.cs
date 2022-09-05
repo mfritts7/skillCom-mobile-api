@@ -12,8 +12,8 @@ using SkillCom_Mobile_Api.Data;
 namespace SkillCom_Mobile_Api.Migrations
 {
     [DbContext(typeof(SkillComDbContext))]
-    [Migration("20220902182108_AddedAuthStuff")]
-    partial class AddedAuthStuff
+    [Migration("20220904204449_First Mig")]
+    partial class FirstMig
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,6 +34,10 @@ namespace SkillCom_Mobile_Api.Migrations
 
                     b.Property<int>("DeviceId")
                         .HasColumnType("int");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PlanId")
                         .HasColumnType("int");

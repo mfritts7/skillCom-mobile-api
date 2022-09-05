@@ -33,6 +33,10 @@ namespace SkillCom_Mobile_Api.Migrations
                     b.Property<int>("DeviceId")
                         .HasColumnType("int");
 
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("PlanId")
                         .HasColumnType("int");
 
@@ -47,7 +51,7 @@ namespace SkillCom_Mobile_Api.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Contract", (string)null);
+                    b.ToTable("Contract");
                 });
 
             modelBuilder.Entity("SkillCom_Mobile_Api.Models.Device", b =>
@@ -71,7 +75,7 @@ namespace SkillCom_Mobile_Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Device", (string)null);
+                    b.ToTable("Device");
                 });
 
             modelBuilder.Entity("SkillCom_Mobile_Api.Models.Plan", b =>
@@ -91,7 +95,7 @@ namespace SkillCom_Mobile_Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Plan", (string)null);
+                    b.ToTable("Plan");
                 });
 
             modelBuilder.Entity("SkillCom_Mobile_Api.Models.User", b =>
@@ -120,7 +124,7 @@ namespace SkillCom_Mobile_Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("User", (string)null);
+                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("SkillCom_Mobile_Api.Models.Contract", b =>

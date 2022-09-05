@@ -117,7 +117,8 @@ namespace SkillCom_Mobile_Api.Controllers
             {
                 UserId = contractDto.UserId,
                 DeviceId = contractDto.DeviceId,
-                PlanId = contractDto.PlanId
+                PlanId = contractDto.PlanId,
+                PhoneNumber = contractDto.PhoneNumber
             };
 
 
